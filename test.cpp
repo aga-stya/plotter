@@ -3,6 +3,7 @@
 #include "Input/Input.hpp"
 #include "Input/SetInput.hpp"
 #include "Plot/Plot.hpp"
+#include "Buffer/Buffer.hpp"
 
 int main() {
   //std::unique_ptr<SetInput> input(new SetInput("/home/pavan/Documents/plotter/Input/sample.txt"));
@@ -23,5 +24,10 @@ int main() {
     input->closeInput();
   }
   plot();
-
+  Buffer buffer;
+  std::cout << buffer.isBufferQueueEmpty() << std::endl;
+  buffer.insertBufferQueue(5.6);
+  std::cout << buffer.isBufferQueueEmpty() << std::endl;
+  std::cout << buffer.getValueFromBufferQueue() << std::endl;
+  std::cout << buffer.isBufferQueueEmpty() << std::endl;
 }

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.16)
   
 # set the project name
 project(Test)
@@ -13,6 +13,7 @@ include_directories("${PROJECT_SOURCE_DIR}/Input")
 include_directories("${PROJECT_SOURCE_DIR}/Plot")
 add_subdirectory(Input)
 add_subdirectory(Plot)
+add_subdirectory(Buffer)
 # add the executable
 add_executable(test test.cpp)
 # link with Input directory

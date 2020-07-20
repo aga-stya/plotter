@@ -1,5 +1,5 @@
-#ifndef SETINPUT_HPP
-#define SETINPUT_HPP
+#ifndef INPUTCONTEXT_HPP
+#define INPUTCONTEXT_HPP
 
 #include <string>
 #include <iostream>
@@ -8,7 +8,7 @@
 #include "FileInput/FileInput.hpp"
 #include "ComInput/ComInput.hpp"
 
-class SetInput {
+class InputContext {
   private: 
     std::unique_ptr<Input> input;
   public:
@@ -19,7 +19,7 @@ class SetInput {
      * If the given channel contains ip address then its a TCP/IP channel
      * Therefore its necessary to provide a text file with .txt extension.
      */
-    SetInput(std::string inputChannel) {
+    InputContext(std::string inputChannel) {
       if (inputChannel.find("dev") != std::string::npos ||
           inputChannel.find("com") != std::string::npos) {
         //inputChannel is a com port

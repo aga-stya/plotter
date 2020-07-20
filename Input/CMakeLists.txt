@@ -13,7 +13,7 @@ include_directories("${PROJECT_SOURCE_DIR}")
 add_subdirectory(FileInput)
 add_subdirectory(ComInput)
 set(inputSourceFiles Input.cpp Input.hpp 
-                     SetInput.hpp)
+                     InputContext.hpp)
 # add the executable
 add_library(Input ${inputSourceFiles})
 

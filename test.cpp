@@ -1,13 +1,13 @@
 #include <iostream>
 #include <memory>
 #include "Input/Input.hpp"
-#include "Input/SetInput.hpp"
+#include "Input/InputContext.hpp"
 #include "Plot/Plot.hpp"
 #include "Buffer/Buffer.hpp"
 
 int main() {
-  //std::unique_ptr<SetInput> input(new SetInput("/home/pavan/Documents/plotter/Input/sample.txt"));
-  std::unique_ptr<SetInput> input(new SetInput("/dev/"));
+  //std::unique_ptr<InputContext> input(new InputContext("/home/pavan/Documents/plotter/Input/sample.txt"));
+  std::unique_ptr<InputContext> input(new InputContext("/dev/"));
   if (input->openInput()) {
     /*while(1) {
       double inputData;

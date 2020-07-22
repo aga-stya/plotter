@@ -10,15 +10,21 @@ class Buffer {
   
   public:
     void insertBufferQueue(double value) {
-        bufferQueue.push(value);
+      bufferQueue.push(value);
     }
-    double getValueFromBufferQueue() {
-        double result = bufferQueue.front();
-        bufferQueue.pop();
-        return result;
+    bool getValueFromBufferQueue(double& value) {
+      if (bufferQueue.empty()) {
+        return false;
+      }
+      value = bufferQueue.front();
+      bufferQueue.pop();
+      return true;
     }
     bool isBufferQueueEmpty() {
       return bufferQueue.empty();
+    }
+    int getBufferSize() {
+      return bufferQueue.size();
     }
 };
 #endif

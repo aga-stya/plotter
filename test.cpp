@@ -6,28 +6,15 @@
 #include "Buffer/Buffer.hpp"
 
 int main() {
-  //std::unique_ptr<InputContext> input(new InputContext("/home/pavan/Documents/plotter/Input/sample.txt"));
-  std::unique_ptr<InputContext> input(new InputContext("/dev/"));
+  std::string filePath = "/home/ppa/Documents/plotter/plotter/Input/sample.txt";
+  std::shared_ptr<Buffer> ptr(new Buffer());
+  std::unique_ptr<InputContext> input(new InputContext(filePath, ptr));
   if (input->openInput()) {
-    /*while(1) {
-      double inputData;
-      int returnVal = input->getInputData(inputData);
-      if (returnVal == 0) {
-        std::cout << inputData << "\n";
-        break;
-      } else if (returnVal == 2) {
-        std::cout << "invalid input\n";
-      } else {
-        std::cout << inputData << "\n";
-      }
-    }*/
-    input->closeInput();
+    input->readDataIntoBuffer();
   }
-  plot();
-  Buffer buffer;
-  std::cout << buffer.isBufferQueueEmpty() << std::endl;
-  buffer.insertBufferQueue(5.6);
-  std::cout << buffer.isBufferQueueEmpty() << std::endl;
-  std::cout << buffer.getValueFromBufferQueue() << std::endl;
-  std::cout << buffer.isBufferQueueEmpty() << std::endl;
+  double val;
+  while (ptr->getValueFromBufferQueue(val)) {
+    std::cout << val << " ";
+  }
+  std::cout << std::endl;
 }

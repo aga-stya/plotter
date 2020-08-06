@@ -12,6 +12,7 @@ class Buffer {
     void insertBufferQueue(double value) {
       bufferQueue.push(value);
     }
+
     bool getValueFromBufferQueue(double& value) {
       if (bufferQueue.empty()) {
         return false;
@@ -20,9 +21,11 @@ class Buffer {
       bufferQueue.pop();
       return true;
     }
+
     bool isBufferQueueEmpty() {
       return bufferQueue.empty();
     }
+
     int getBufferSize() {
       return bufferQueue.size();
     }

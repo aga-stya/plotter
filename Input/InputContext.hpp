@@ -4,6 +4,9 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <chrono>
+#include <thread>
+
 #include "Input.hpp"
 #include "FileInput/FileInput.hpp"
 #include "ComInput/ComInput.hpp"
@@ -14,6 +17,9 @@ class InputContext {
     std::unique_ptr<Input> input;
     std::shared_ptr<Buffer> ptrBuffer;
 
+  private:
+
+
   public:
     /**
      * Determines which channel is used by checking for the key words.
@@ -22,7 +28,7 @@ class InputContext {
      * If the given channel contains ip address then its a TCP/IP channel
      * Therefore its necessary to provide a text file with .txt extension.
      */
-    InputContext(std::string inputChannel, std::shared_ptr<Buffer> ptr):ptrBuffer(ptr) {
+    InputContext(const std::string inputChannel, std::shared_ptr<Buffer> ptr):ptrBuffer(ptr) {
       //ptrBuffer = ptr;
       if (inputChannel.find("dev") != std::string::npos ||
           inputChannel.find("com") != std::string::npos) {
@@ -39,19 +45,17 @@ class InputContext {
       return input->openInput();
     }
 
-    int  readDataIntoBuffer() {
+    int readDataIntoBuffer() const {
       while(1) {
         double inputData;
         int returnVal = input->getInputData(inputData);
         if (returnVal == 0) {
-          std::cout << inputData << "\n";
-          ptrBuffer->insertBufferQueue(inputData);
-          break;
-        } else if (returnVal == 2) {
-          std::cout << "invalid input\n";
+          //EOF sleep for some time and then read again
+          std::this_thread::sleep_for(std::chrono::seconds(1));
         } else {
-          std::cout << inputData << "\n";
+          std::cout << "data read:" << inputData;
           ptrBuffer->insertBufferQueue(inputData);
+          std::cout << ", buffer size:" << ptrBuffer->getBufferSize() << "\n";
         }
       }
       return ptrBuffer->getBufferSize();

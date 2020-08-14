@@ -4,13 +4,15 @@
 #include <string>
 #include <iostream>
 #include <memory>
-#include <chrono>
 #include <thread>
+#include <chrono>
 
 #include "Input.hpp"
 #include "FileInput/FileInput.hpp"
 #include "ComInput/ComInput.hpp"
 #include "../Buffer/Buffer.hpp"
+
+#define TEST
 
 class InputContext {
   private: 
@@ -56,6 +58,9 @@ class InputContext {
           std::cout << "data read:" << inputData;
           ptrBuffer->insertBufferQueue(inputData);
           std::cout << ", buffer size:" << ptrBuffer->getBufferSize() << "\n";
+          #ifdef TEST
+          std::this_thread::sleep_for(std::chrono::milliseconds(10));
+          #endif
         }
       }
       return ptrBuffer->getBufferSize();

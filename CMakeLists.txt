@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.10)
 project(Test)
 #set C++ standard to C++17
 set(CMAKE_CXX_STANDARD 17)
@@ -13,6 +14,7 @@ include_directories("${PROJECT_SOURCE_DIR}/Input")
 include_directories("${PROJECT_SOURCE_DIR}/Plot")
 add_subdirectory(Input)
 add_subdirectory(Buffer)
+add_subdirectory(Plot)
 # add the executable
 add_executable(tester test.cpp)
 # link with Input directory

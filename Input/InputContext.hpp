@@ -4,10 +4,15 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <thread>
+#include <chrono>
+
 #include "Input.hpp"
 #include "FileInput/FileInput.hpp"
 #include "ComInput/ComInput.hpp"
 #include "../Buffer/Buffer.hpp"
+
+#define TEST
 
 class InputContext {
   private: 
@@ -39,19 +44,20 @@ class InputContext {
       return input->openInput();
     }
 
-    int  readDataIntoBuffer() {
+    int readDataIntoBuffer() const {
       while(1) {
         double inputData;
         int returnVal = input->getInputData(inputData);
         if (returnVal == 0) {
-          std::cout << inputData << "\n";
-          ptrBuffer->insertBufferQueue(inputData);
-          break;
-        } else if (returnVal == 2) {
-          std::cout << "invalid input\n";
+          //EOF sleep for some time and then read again
+          std::this_thread::sleep_for(std::chrono::seconds(1));
         } else {
-          std::cout << inputData << "\n";
+          std::cout << "data read:" << inputData;
           ptrBuffer->insertBufferQueue(inputData);
+          std::cout << ", buffer size:" << ptrBuffer->getBufferSize() << "\n";
+          #ifdef TEST
+          std::this_thread::sleep_for(std::chrono::milliseconds(10));
+          #endif
         }
       }
       return ptrBuffer->getBufferSize();

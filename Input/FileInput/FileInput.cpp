@@ -13,25 +13,28 @@ bool FileInput::openInput(){
 }
 
 int FileInput::getInputData(double& inputValue) {
-  fileStream >> inputValue;
-  if (fileStream.fail()) {
+  if (fileStream >> inputValue) {
+    return 1;
+  } else if (fileStream.eof()){
+    fileStream.clear();
+    std::cout << "End of Input(File) " << fileName <<  " is reached\n";
+    return 0;
+  } else if (fileStream.fail()) {
     std::cerr << "Invalid input, non-number present in the Input(file), ";
     //clear the error bits 
     fileStream.clear();
     //read the character from the stream which is causing the error
     std::string s;
     fileStream >> s;
-    std::cerr << "the element which is causing the problem is \"" << s << "\"\n";
+    std::cerr << "invalid element in the stream\"" << s << "\"\n";
     return 2;
-  } else if (fileStream.eof()){
-    std::cout << "End of Input(File) " << fileName <<  " is reached\n";
-    return 0;
   } else if (fileStream.bad()) {
+    //TODO: dont know what to do here yet (should i stop the execution or continue to take the input);
     std::cout << "Bad stream while reading Input(file)\n";
     return 0;
   } else {
-    return 1;
-  } 
+    return 0;
+  }
 }
 
 bool FileInput::closeInput() {

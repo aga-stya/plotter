@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.10)
   
 # set the project name
 project(Test)
@@ -15,6 +15,6 @@ add_subdirectory(Input)
 add_subdirectory(Plot)
 add_subdirectory(Buffer)
 # add the executable
-add_executable(test test.cpp)
+add_executable(tester test.cpp)
 # link with Input directory
-target_link_libraries(test Input Plot)
+target_link_libraries(tester Input Plot pthread)

@@ -8,33 +8,48 @@
 #include <fstream>
 
 #include "../Buffer/Buffer.hpp"
+#include "axis.h"
+#include "grid.h"
 
 class realTimeGraph {
 private:
     // create the window
     std::shared_ptr<sf::RenderWindow> window;
+    // exit button
+    sf::Sprite exitButtonImage;
     // check all the window's events that were triggered since the last iteration of the loop
     std::shared_ptr<sf::Event> event;
     // vector that holds the points to be plotted
     std::vector<sf::Vertex> curve;
     // max width of the window
-    int windowWidth;
+    int windowWidth = 1000;
     // max height of the window
-    int windowHeight;
-    // current x co-ordinate
-    //int current_x;
-    // current y co-ordinate
-    //int current_y;
+    int windowHeight = 600;
+    // max width allocated for the graph
+    int graphWidth = windowWidth - 300 - 100;
     // pointer to Buffer containing input values
     std::shared_ptr<Buffer> ptrBuffer;
-    // flag to indicate that the old values have to be removed in order to accommodate new ones
-    //bool startRemovingOldOnes;
+    // pointer to Axis object
+    std::shared_ptr<plot::Axis> ptrAxis;
+    // pointer to Grid object
+    std::shared_ptr<plot::Grid> ptrGrid;
+
+private:
+    // prepare the window for the plot
+    void initializeWindow(void);
+    // add the axes for the graph
+    void drawAxes(void);
+    // add grids to the graph
+    void drawGrid(void);
 
 public:
     //Initialize the window within which the graph is to be created
-    realTimeGraph(int width, int height, std::string nameOfTheWindow, std::shared_ptr<Buffer> ptr);
+    //realTimeGraph(int width, int height, std::string nameOfTheWindow, std::shared_ptr<Buffer> ptr);
+    realTimeGraph(std::string nameOfTheWindow, std::shared_ptr<Buffer> ptr);
     // Destructor
     ~realTimeGraph();
+    // rename the window
+    void changeWindowName(std::string newName); 
     //Clear the window with a particular color
     void clearWindow (sf::Color color);
     // check if window is open
@@ -43,7 +58,6 @@ public:
     void checkCloseWindow();
     // check if there is an event
     bool isThereAnEvent();
-
 
     // add a new vertex to the curve
     void addNewPoint (sf::Vertex vertex);

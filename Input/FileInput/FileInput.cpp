@@ -14,6 +14,8 @@ bool FileInput::openInput(){
 
 int FileInput::getInputData(double& inputValue) {
   if (fileStream >> inputValue) {
+    //TEST
+    //inputValue *= 2;
     return 1;
   } else if (fileStream.eof()){
     fileStream.clear();

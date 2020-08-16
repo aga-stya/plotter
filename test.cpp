@@ -20,7 +20,7 @@ void readInput(std::shared_ptr<Buffer> ptr) {
 }
 
 void plotting(std::shared_ptr<Buffer> ptr) {
-  realTimeGraph MyGraph(500, 500, "My Window", ptr);
+  realTimeGraph MyGraph("My Window", ptr);
   MyGraph.startRealTimeGraph();
 }
 

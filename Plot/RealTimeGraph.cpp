@@ -7,7 +7,8 @@ realTimeGraph::realTimeGraph(std::string nameOfTheWindow, std::shared_ptr<Buffer
               :ptrBuffer(ptr), 
                ptrGrid(std::make_unique<plot::Grid>(sf::Vector2f(gridAreaPositionX, gridAreaPositionY), 
                                            sf::Vector2f(gridAreaWidth, gridAreaHeight))),
-               ptrAxis(std::make_unique<plot::Axis>()) {
+               ptrAxis(std::make_unique<plot::Axis>(sf::Vector2f(gridAreaWidth, gridAreaHeight),
+                                                    sf::Vector2f(xAxisOffset, yAxisOffset))) {
     // create the window
     initializeWindow();
     event.reset(new sf::Event);

@@ -15,7 +15,7 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief constructor
     ////////////////////////////////////////////////////////////
-    Axis();
+    Axis(sf::Vector2f, sf::Vector2f);
     ////////////////////////////////////////////////////////////
     /// \brief setup once the Axis shape
     ///
@@ -37,7 +37,9 @@ private:
     sf::Font font;
 
     /// Axis color
-    sf::Color color_;
+    sf::Color nameColor;
+    sf::Vector2f graphSize;
+    sf::Vector2f offset;
 };
 }
 

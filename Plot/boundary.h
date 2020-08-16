@@ -1,12 +1,11 @@
-#ifndef SFML_PLOT_GRID_H
-#define SFML_PLOT_GRID_H
-
+#ifndef SFML_PLOT_BOUNDARY_H
+#define SFML_PLOT_BOUNDARY_H 
 #include <vector>
 #include <SFML/Graphics.hpp>
 
 namespace plot {
 
-class Grid
+class Boundary 
         : public sf::Drawable
         , public sf::Transformable {
 private:
@@ -22,29 +21,29 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief constructor
     ////////////////////////////////////////////////////////////
-    Grid(sf::Vector2f gridPosition, sf::Vector2f gridSize);
+    Boundary(sf::Vector2f boundaryPosition, sf::Vector2f boundarySize);
     ////////////////////////////////////////////////////////////
     /// \brief setup once the grid shape
     ///
     /// \param size grid size
     ////////////////////////////////////////////////////////////
-    void setup(void);
+    void setup();
 private:
     ////////////////////////////////////////////////////////////
     /// \brief sfml method for drawing
     ////////////////////////////////////////////////////////////
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-    /// grid lines
-    sf::VertexArray vertices_;
+    /// grid borders
+    sf::RectangleShape border;
 
     /// grid color
-    sf::Color gridColor;
+    sf::Color color;
+    /// boundary size
+    sf::Vector2f size;
+    /// boundary position
+    sf::Vector2f position;
 
-    /// keep the size
-    sf::Vector2f gridSize;
-    /// position
-    sf::Vector2f gridPosition;
 };
 }
 

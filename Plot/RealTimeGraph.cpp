@@ -5,24 +5,34 @@
 
 realTimeGraph::realTimeGraph(std::string nameOfTheWindow, std::shared_ptr<Buffer> ptr)
               :ptrBuffer(ptr), 
-               ptrAxis(std::make_shared<plot::Axis>()),
-               ptrGrid(std::make_shared<plot::Grid>()) {
+               ptrGrid(std::make_unique<plot::Grid>(sf::Vector2f(gridAreaPositionX, gridAreaPositionY), 
+                                           sf::Vector2f(gridAreaWidth, gridAreaHeight))),
+               ptrAxis(std::make_unique<plot::Axis>()) {
     // create the window
-    std::cout << "Constructor called" << std::endl;
     initializeWindow();
     event.reset(new sf::Event);
 }
 
-realTimeGraph::~realTimeGraph()
-{
+realTimeGraph::~realTimeGraph() {
 }
 
 void realTimeGraph::initializeWindow(void) {
+    prepareBoundary();
+    for (auto &boundary:ptrBoundaries)
+        boundary->setup();
+
     window.reset(new sf::RenderWindow (sf::VideoMode(windowWidth, windowHeight), "My window"));
-    sf::Sprite  exitButtonImage;
-    exitButtonImage.setPosition(25.0f, 100.0f);
     ptrAxis->setup("font.ttf");
-    ptrGrid->setup(sf::Vector2f(1000, 600));
+    ptrGrid->setup();
+}
+
+void realTimeGraph::prepareBoundary(void) {
+    std::unique_ptr<plot::Boundary> plotBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(0, 0), sf::Vector2f(700, 600));
+    ptrBoundaries.push_back(std::move(plotBoundary));
+    std::unique_ptr<plot::Boundary> graphBoundary = std::make_unique<plot::Boundary>(sf::Vector2f(100, 50), sf::Vector2f(500, 500));
+    ptrBoundaries.push_back(std::move(graphBoundary));
+    std::unique_ptr<plot::Boundary> menuBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(700, 0), sf::Vector2f(300, 600));
+    ptrBoundaries.push_back(std::move(menuBoundary));
 }
 
 void realTimeGraph::changeWindowName(std::string newName) {
@@ -60,6 +70,9 @@ void realTimeGraph::reassignVertices() {
 }
 
 void realTimeGraph::drawGraph() {
+    for (auto &boundary:ptrBoundaries) {
+        window->draw(*boundary);
+    }
     window->draw(*ptrGrid);
     window->draw(*ptrAxis);
     window->draw(&curve[0], curve.size(), sf::PrimitiveType::LineStrip);

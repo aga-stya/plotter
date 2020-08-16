@@ -10,6 +10,7 @@
 #include "../Buffer/Buffer.hpp"
 #include "axis.h"
 #include "grid.h"
+#include "boundary.h"
 
 class realTimeGraph {
 private:
@@ -30,9 +31,30 @@ private:
     // pointer to Buffer containing input values
     std::shared_ptr<Buffer> ptrBuffer;
     // pointer to Axis object
-    std::shared_ptr<plot::Axis> ptrAxis;
+    std::unique_ptr<plot::Axis> ptrAxis;
     // pointer to Grid object
-    std::shared_ptr<plot::Grid> ptrGrid;
+    std::unique_ptr<plot::Grid> ptrGrid;
+    // pointer to Boundary object
+    std::vector<std::unique_ptr<plot::Boundary>> ptrBoundaries;
+
+    //plot area specifications
+    static constexpr int plotAreaWidth  = 700;
+    static constexpr int plotAreaHeight = 600;
+    static constexpr int plotAreaPositionX = 0;
+    static constexpr int plotAreaPositionY = 0;
+    //grid area specifications
+    static constexpr int gridAreaWidth    = 500;
+    static constexpr int gridAreaHeight   = 500;
+    static constexpr int gridAreaPositionX = 100;
+    static constexpr int gridAreaPositionY = 50;
+    //menu area specifications
+    static constexpr int menuAreaWidth    = 300;
+    static constexpr int menuAreaHeight   = 600;
+    static constexpr int menuAreaPositionX = 700;
+    static constexpr int menuAreaPositionY = 0;
+    //offset
+    static constexpr int xAxisOffset = 100;
+    static constexpr int yAxisOffset = 50;
 
 private:
     // prepare the window for the plot
@@ -41,6 +63,8 @@ private:
     void drawAxes(void);
     // add grids to the graph
     void drawGrid(void);
+    // prepare boundary
+    void prepareBoundary(void);
 
 public:
     //Initialize the window within which the graph is to be created

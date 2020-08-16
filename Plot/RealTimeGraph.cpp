@@ -103,7 +103,6 @@ void realTimeGraph::startRealTimeGraph() {
     // run the program as long as the window is open
     while (isWindowOpen())
     {
-        //std::cout << "is window open :" << isWindowOpen() << std::endl;
         // check all the window's events that were triggered since the last iteration of the loop
         checkCloseWindow();
 
@@ -111,7 +110,6 @@ void realTimeGraph::startRealTimeGraph() {
         clearWindow(sf::Color::White);
 
         //add new point if there is a new value in the file
-        //if (checkForValue())
         double val = 0.0;
         if (ptrBuffer->getValueFromBufferQueue(val)) {
             std::cout << "total values written:" << ++count << "\n";
@@ -121,8 +119,6 @@ void realTimeGraph::startRealTimeGraph() {
         drawGraph();
         // end the current frame
         displayWindow();
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }
 

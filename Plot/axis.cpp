@@ -11,7 +11,7 @@ Axis::Axis() {
 }
 
 void Axis::setup(std::string fileName) {
-    if (!font.loadFromFile("font.ttf")) {
+    if (!font.loadFromFile("../Plot/font.ttf")) {
         std::cout << "font file not found \n";
         throw;
     } else {

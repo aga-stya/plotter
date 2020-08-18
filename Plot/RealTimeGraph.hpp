@@ -30,7 +30,7 @@ private:
     // pointer to Grid object
     std::unique_ptr<plot::Grid> ptrGrid;
     // pointer to Grid object
-    std::unique_ptr<plot::Curve> ptrVertices;
+    std::unique_ptr<plot::Curve> ptrCurve;
     // pointer to Boundary object
     std::vector<std::unique_ptr<plot::Boundary>> ptrBoundaries;
 

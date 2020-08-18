@@ -9,7 +9,7 @@ realTimeGraph::realTimeGraph(std::string nameOfTheWindow, std::shared_ptr<Buffer
                                 sf::Vector2f(gridAreaWidth, gridAreaHeight));
     ptrAxis = std::make_unique<plot::Axis>(sf::Vector2f(gridAreaWidth, gridAreaHeight),
                                          sf::Vector2f(xAxisOffset, yAxisOffset));
-e   ptrCurve = std::make_unique<plot::Curve>(gridAreaPositionX + gridAreaWidth);
+    ptrCurve = std::make_unique<plot::Curve>(gridAreaPositionX + gridAreaWidth);
     // create the window
     initializeWindow();
     event.reset(new sf::Event);

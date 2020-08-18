@@ -55,9 +55,9 @@ class InputContext {
           //EOF sleep for some time and then read again
           std::this_thread::sleep_for(std::chrono::seconds(1));
         } else {
-          std::cout << "data read:" << inputData;
+          //std::cout << "data read:" << inputData;
           ptrBuffer->insertBufferQueue(inputData);
-          std::cout << ", buffer size:" << ptrBuffer->getBufferSize() << "\n";
+          //std::cout << ", buffer size:" << ptrBuffer->getBufferSize() << "\n";
           #ifdef TEST
           std::this_thread::sleep_for(std::chrono::milliseconds(10));
           #endif

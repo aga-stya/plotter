@@ -9,6 +9,7 @@ realTimeGraph::realTimeGraph(std::string nameOfTheWindow, std::shared_ptr<Buffer
                                 sf::Vector2f(gridAreaWidth, gridAreaHeight));
     ptrAxis = std::make_unique<plot::Axis>(sf::Vector2f(gridAreaWidth, gridAreaHeight),
                                          sf::Vector2f(xAxisOffset, yAxisOffset));
+    ptrVertices = std::make_unique<plot::Curve>(gridAreaPositionX + gridAreaWidth);
     // create the window
     initializeWindow();
     event.reset(new sf::Event);
@@ -25,8 +26,10 @@ void realTimeGraph::initializeWindow(void) {
     window.reset(new sf::RenderWindow (sf::VideoMode(windowWidth, windowHeight), "My window"));
     ptrAxis->setup("font.ttf");
     ptrGrid->setup();
+    ptrVertices->setup();
 }
 
+//TODO: move this to Boundaries class
 void realTimeGraph::prepareBoundary(void) {
     std::unique_ptr<plot::Boundary> plotBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(0, 0), sf::Vector2f(700, 600));
     ptrBoundaries.push_back(std::move(plotBoundary));
@@ -44,39 +47,13 @@ void realTimeGraph::clearWindow (sf::Color color) {
     window->clear(color);
 }
 
-void realTimeGraph::addNewPoint (double y) {
-    static int  current_x = 100;
-    static bool startRemovingOldOnes = false;
-
-    y += 50 + (500 / 2);
-    y -= 250;
-
-    if (startRemovingOldOnes) {
-        reassignVertices();
-        //over write the last element instead of adding a new element
-        curve.back() = sf::Vertex(sf::Vector2f(current_x, y), sf::Color::Blue);
-    } else {
-        curve.push_back(sf::Vertex(sf::Vector2f(current_x, y), sf::Color::Blue));
-        current_x += 2;
-        if (current_x >= graphWidth) {
-            startRemovingOldOnes = true;
-        }
-    }
-}
-
-void realTimeGraph::reassignVertices() {
-    for (auto it = curve.begin(); it != curve.end(); it++) {
-        it->position.y = (it + 1)->position.y;
-    } 
-}
-
 void realTimeGraph::drawGraph() {
     for (auto &boundary:ptrBoundaries) {
         window->draw(*boundary);
     }
     window->draw(*ptrGrid);
     window->draw(*ptrAxis);
-    window->draw(&curve[0], curve.size(), sf::PrimitiveType::LineStrip);
+    window->draw(*ptrVertices);
 }
 
 bool realTimeGraph::isWindowOpen() {
@@ -103,14 +80,6 @@ void realTimeGraph::displayWindow() {
     window->display();
 }
 
-bool realTimeGraph::hasWindowWidthExceeded(int val) {
-    return (val > windowWidth);
-}
-
-bool realTimeGraph::hasWindowHeightExceeded(int val) {
-    return (val > windowHeight);
-}
-
 void realTimeGraph::startRealTimeGraph() {
     int i,j;
     int count = 0;
@@ -127,9 +96,9 @@ void realTimeGraph::startRealTimeGraph() {
         double val = 0.0;
         if (ptrBuffer->getValueFromBufferQueue(val)) {
             std::cout << "total values written:" << ++count << "\n";
-            addNewPoint(val);
+            //addNewPoint(val);
+            ptrVertices->addNewPoint(val);
         }
-
         drawGraph();
         // end the current frame
         displayWindow();

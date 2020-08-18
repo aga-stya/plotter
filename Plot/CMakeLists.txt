@@ -14,7 +14,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 #endif()
 
 # add the executable
-add_library(Plot RealTimeGraph.cpp grid.cpp axis.cpp boundary.cpp)
+add_library(Plot RealTimeGraph.cpp grid.cpp axis.cpp boundary.cpp vertices.cpp)
 
 # link sfml libraries with Plot
 target_link_libraries (Plot sfml-graphics sfml-window sfml-system)

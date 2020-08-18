@@ -13,7 +13,8 @@ Axis::Axis(sf::Vector2f size, sf::Vector2f off):graphSize(size) ,
 }
 
 void Axis::setup(std::string fileName) {
-    if (!font.loadFromFile("../Plot/OpenSans-Regular.ttf")) {
+    //if (!font.loadFromFile("../Plot/OpenSans-Regular.ttf")) {
+    if (!font.loadFromFile("/home/pavan/plotter/Plot/OpenSans-Regular.ttf")) {
         std::cout << "font file not found \n";
         throw;
     } else {

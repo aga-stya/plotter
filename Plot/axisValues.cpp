@@ -23,6 +23,7 @@ void AxisValues::setup() {
         sf::Text temp;
         temp.setFont(font);
         int axisVal = start + (i * offset);
+        // divide by distanceBetweenX to account for the distance between 2 points
         temp.setString(std::to_string(axisVal / distanceBetweenX));
         temp.setCharacterSize(12);
         temp.setFillColor(nameColor);

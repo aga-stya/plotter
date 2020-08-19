@@ -99,7 +99,8 @@ void realTimeGraph::startRealTimeGraph() {
         if (ptrBuffer->getValueFromBufferQueue(val)) {
             std::cout << "total values written:" << ++count << "\n";
             //addNewPoint(val);
-            ptrCurve->addNewPoint(val);
+            sf::Vector2f temp = ptrCurve->addNewPoint(val);
+            ptrAxis->nameValuesOnXAxis(temp.x, temp.y);
         }
         drawGraph();
         // end the current frame

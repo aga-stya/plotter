@@ -31,7 +31,7 @@ public:
     ////////////////////////////////////////////////////////////
     void setup();
     // add a new vertex with y co-ordinate only
-    void addNewPoint (double y);
+    sf::Vector2f addNewPoint (double y);
     // increase the x co-ordinate
     void increaseX();
     // start the loop for the graph

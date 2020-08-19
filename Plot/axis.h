@@ -22,6 +22,7 @@ public:
     /// \param size Axis size
     ////////////////////////////////////////////////////////////
     void setup(std::string fileName);
+    void nameValuesOnXAxis(int ,int);
 private:
     ////////////////////////////////////////////////////////////
     /// \brief sfml method for drawing
@@ -33,6 +34,7 @@ private:
     std::string yAxisName;
     sf::Text xAxis;
     sf::Text yAxis;
+    std::vector<sf::Text> xAxisNames;
 
     sf::Font font;
 

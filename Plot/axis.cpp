@@ -33,7 +33,7 @@ void Axis::setup(std::string fileName) {
     yAxis.setCharacterSize(16);
     yAxis.setFillColor(nameColor);
     int yPosition = offset.y + (graphSize.y / 2) - (yAxisName.size() / 2);
-    yAxis.setPosition(90, yPosition);
+    yAxis.setPosition(offset.y + 20, yPosition);
     yAxis.setRotation(90);
 }
 

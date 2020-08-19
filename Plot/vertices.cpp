@@ -43,6 +43,7 @@ void Curve::addNewPoint (double y) {
 // move the vertices to the left to accommodate the new vertice
 void Curve::reassignVertices() {
     for (auto it = curve.begin(); it != curve.end(); it++) {
+        it->position.x = (it + 1)->position.x;
         it->position.y = (it + 1)->position.y;
     } 
 }

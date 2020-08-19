@@ -23,7 +23,7 @@ void AxisValues::setup() {
         sf::Text temp;
         temp.setFont(font);
         int axisVal = start + (i * offset);
-        temp.setString(std::to_string(axisVal));
+        temp.setString(std::to_string(axisVal / distanceBetweenX));
         temp.setCharacterSize(12);
         temp.setFillColor(nameColor);
         int xValue = xAxisStartPosition + (i * offset) - std::ceil(std::to_string(axisVal).size() / 2) - 5; 

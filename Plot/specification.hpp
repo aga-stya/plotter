@@ -14,7 +14,7 @@ constexpr int yAxisEnd = 550;
 constexpr int graphWidth = 500;
 constexpr int graphHeight = 500;
 
-constexpr int distanceBetweenX = 2;
+constexpr int distanceBetweenX = 3;
 
 //borders
 constexpr int kBorderSize = 2;

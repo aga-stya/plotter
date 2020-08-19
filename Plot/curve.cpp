@@ -3,7 +3,7 @@
 
 namespace plot {
 
-Curve::Curve(int width):graphWidth(width) {
+Curve::Curve() {
     color = sf::Color(150, 150, 150);
 }
 
@@ -12,7 +12,6 @@ void Curve::setup(void) {
 
 void Curve::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     states.transform *= getTransform();
-    //target.draw(border, states);
     target.draw(&curve[0], curve.size(), sf::PrimitiveType::LineStrip);
 }
 
@@ -20,10 +19,9 @@ void Curve::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 void Curve::addNewPoint (double y) {
     static int  current_x = 100;
     static bool startRemovingOldOnes = false;
-    numOfPoints++;
 
-    y += 50 + (500 / 2);
-    y -= 250;
+    y += yOffset; //move 50 down
+    //y += (graphHeight / 2); //move down, TODO: remove later
 
     std::cout << "current value to be added to curve:" << current_x << "," << y << "\n";
 
@@ -33,8 +31,8 @@ void Curve::addNewPoint (double y) {
         curve.back() = sf::Vertex(sf::Vector2f(current_x, y), sf::Color::Blue);
     } else {
         curve.push_back(sf::Vertex(sf::Vector2f(current_x, y), sf::Color::Blue));
-        current_x += 4;
-        if (current_x >= graphWidth) {
+        current_x += distanceBetweenX;
+        if (current_x >= xAxisEnd) {
             startRemovingOldOnes = true;
         }
     }

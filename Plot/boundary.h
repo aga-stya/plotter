@@ -1,5 +1,6 @@
 #ifndef SFML_PLOT_BOUNDARY_H
 #define SFML_PLOT_BOUNDARY_H 
+#include "specification.hpp"
 #include <vector>
 #include <SFML/Graphics.hpp>
 

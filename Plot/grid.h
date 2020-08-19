@@ -4,25 +4,18 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+#include "specification.hpp"
+
 namespace plot {
 
 class Grid
         : public sf::Drawable
         , public sf::Transformable {
-private:
-    /// means that cut the grid in kPart
-    static const int kPart = 5;
-    static const int menuWidth = 300;
-    static const int plotWidth = 700;
-
-    //border space for grids
-    static const int borderWidthX = 100;
-    static const int borderWidthY = 50;
 public:
     ////////////////////////////////////////////////////////////
     /// \brief constructor
     ////////////////////////////////////////////////////////////
-    Grid(sf::Vector2f gridPosition, sf::Vector2f gridSize);
+    Grid();
     ////////////////////////////////////////////////////////////
     /// \brief setup once the grid shape
     ///
@@ -40,11 +33,6 @@ private:
 
     /// grid color
     sf::Color gridColor;
-
-    /// keep the size
-    sf::Vector2f gridSize;
-    /// position
-    sf::Vector2f gridPosition;
 };
 }
 

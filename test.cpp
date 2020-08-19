@@ -9,8 +9,8 @@
 #include "Buffer/Buffer.hpp"
 
 void readInput(std::shared_ptr<Buffer> ptr) {
-  //std::string filePath = "/home/pavan/plotter/sample.txt";
-  std::string filePath = "../sample.txt";
+  std::string filePath = "/home/ppa/Documents/plotter/plotter/sample.txt";
+  //std::string filePath = "../sample.txt";
   std::unique_ptr<InputContext> input(new InputContext(filePath, ptr));
   if (input->openInput()) {
     input->readDataIntoBuffer();

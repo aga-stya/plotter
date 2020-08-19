@@ -4,6 +4,8 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+#include "specification.hpp"
+
 namespace plot {
 
 class Axis
@@ -15,7 +17,7 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief constructor
     ////////////////////////////////////////////////////////////
-    Axis(sf::Vector2f, sf::Vector2f);
+    Axis();
     ////////////////////////////////////////////////////////////
     /// \brief setup once the Axis shape
     ///
@@ -33,13 +35,9 @@ private:
     std::string yAxisName;
     sf::Text xAxis;
     sf::Text yAxis;
-
     sf::Font font;
-
     /// Axis color
     sf::Color nameColor;
-    sf::Vector2f graphSize;
-    sf::Vector2f offset;
 };
 }
 

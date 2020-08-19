@@ -4,34 +4,16 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+#include "specification.hpp"
+
 namespace plot {
 
 class Curve 
         : public sf::Drawable
         , public sf::Transformable {
-private:
-    /// means that cut the grid in kPart
-    static const int kPart = 5;
-    static const int menuWidth = 300;
-    static const int plotWidth = 700;
-
-    //border space for grids
-    static const int borderWidthX = 100;
-    static const int borderWidthY = 50;
-    int numOfPoints = 0;
-    std::vector<sf::Text> xAxisNames;
-    std::vector<sf::Text> yAxisNames;
 public:
-    ////////////////////////////////////////////////////////////
-    /// \brief constructor
-    ////////////////////////////////////////////////////////////
-    //Vertices(sf::Vector2f boundaryPosition, sf::Vector2f boundarySize);
-    Curve(int width);
-    ////////////////////////////////////////////////////////////
-    /// \brief setup once the grid shape
-    ///
-    /// \param size grid size
-    ////////////////////////////////////////////////////////////
+    Curve();
+
     void setup();
     // add a new vertex with y co-ordinate only
     void addNewPoint (double y);
@@ -47,19 +29,10 @@ private:
     ////////////////////////////////////////////////////////////
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-    /// grid borders
-    sf::RectangleShape border;
     /// grid color
     sf::Color color;
-    /// boundary size
-    sf::Vector2f size;
-    /// boundary position
-    sf::Vector2f position;
     // vector that holds the points to be plotted
     std::vector<sf::Vertex> curve;
-    // graph width
-    int graphWidth;
-
 };
 }
 

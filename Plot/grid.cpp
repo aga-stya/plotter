@@ -3,8 +3,7 @@
 
 namespace plot {
 
-Grid::Grid(sf::Vector2f position, sf::Vector2f size):gridPosition(position), 
-                                                             gridSize(size) {
+Grid::Grid() {
 }
 
 void Grid::setup(void)
@@ -13,18 +12,18 @@ void Grid::setup(void)
     vertices_.clear();
     vertices_.setPrimitiveType(sf::Lines);
 
-    float offset = gridSize.y / kPart ;
-    for(int i = 1; i < kPart; i++) {
-        std::cout << (gridPosition.x) << "," << (i*offset + gridPosition.y) << "\n";
-        vertices_.append(sf::Vertex(sf::Vector2f(gridPosition.x, i*offset + gridPosition.y), gridColor));
-        std::cout << (gridSize.x + gridPosition.x) << "," << (i*offset + gridPosition.y) << "\n";
-        vertices_.append(sf::Vertex(sf::Vector2f(gridSize.x + gridPosition.x, i*offset + gridPosition.y), gridColor));
+    float offset = graphHeight / numOfGrids;
+    for(int i = 1; i < numOfGrids; i++) {
+        std::cout << (gridPositionX) << "," << (i*offset + gridPositionY) << "\n";
+        vertices_.append(sf::Vertex(sf::Vector2f(gridPositionX, i*offset + gridPositionY), gridColor));
+        std::cout << (graphWidth + gridPositionX) << "," << (i*offset + gridPositionY) << "\n";
+        vertices_.append(sf::Vertex(sf::Vector2f(graphWidth + gridPositionX, i*offset + gridPositionY), gridColor));
     }
 
-    offset = gridSize.x / kPart;
-    for(int i = 1; i < kPart; i++) {
-        vertices_.append(sf::Vertex(sf::Vector2f(i*offset + gridPosition.x, gridPosition.y), gridColor));
-        vertices_.append(sf::Vertex(sf::Vector2f(i*offset + gridPosition.x, gridSize.y + gridPosition.y), gridColor));
+    offset = graphWidth / numOfGrids;
+    for(int i = 1; i < numOfGrids; i++) {
+        vertices_.append(sf::Vertex(sf::Vector2f(i*offset + gridPositionX, gridPositionY), gridColor));
+        vertices_.append(sf::Vertex(sf::Vector2f(i*offset + gridPositionX, graphHeight + gridPositionY), gridColor));
     }
 
     //std::cout << "vertices: \n";

@@ -8,8 +8,8 @@ namespace plot {
 
 AxisValues::AxisValues(int valueStart, int valueEnd):start(valueStart), end(valueEnd) {
     nameColor = sf::Color::Black;
-    if (!font.loadFromFile("../Plot/font.ttf")) {
-    //if (!font.loadFromFile("/home/pavan/plotter/Plot/OpenSans-Regular.ttf")) {
+    //if (!font.loadFromFile("../Plot/font.ttf")) {
+    if (!font.loadFromFile("/home/ppa/Documents/plotter/plotter/Plot/OpenSans-Regular.ttf")) {
         std::cout << "font file not found \n";
         throw;
     } else {
@@ -18,9 +18,8 @@ AxisValues::AxisValues(int valueStart, int valueEnd):start(valueStart), end(valu
 }
 
 void AxisValues::setup() {
-    int kPart = 5;
-    int offset = totalSpaceAvailable / kPart;
-    for (auto i = 0; i <= kPart; i++) {
+    int offset = totalSpaceAvailable / numOfGrids;
+    for (auto i = 0; i <= numOfGrids; i++) {
         sf::Text temp;
         temp.setFont(font);
         int axisVal = start + (i * offset);

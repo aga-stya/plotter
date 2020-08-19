@@ -4,6 +4,8 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+#include "specification.hpp"
+
 namespace plot {
 
 class AxisValues 

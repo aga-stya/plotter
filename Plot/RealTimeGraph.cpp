@@ -56,6 +56,7 @@ void realTimeGraph::drawGraph() {
     window->draw(*ptrGrid);
     window->draw(*ptrAxis);
     window->draw(*ptrCurve);
+    window->draw(*ptrAxisValues);
 }
 
 bool realTimeGraph::isWindowOpen() {
@@ -84,7 +85,7 @@ void realTimeGraph::displayWindow() {
 
 void realTimeGraph::startRealTimeGraph() {
     int i,j;
-    int count = 0;
+    static int count = 0;
     // run the program as long as the window is open
     while (isWindowOpen())
     {
@@ -101,6 +102,11 @@ void realTimeGraph::startRealTimeGraph() {
             //addNewPoint(val);
             ptrCurve->addNewPoint(val);
         }
+        if (count < 500)
+            ptrAxisValues = std::make_unique<plot::AxisValues>(0, 500);
+        else 
+            ptrAxisValues = std::make_unique<plot::AxisValues>(count - 500, count);
+
         drawGraph();
         // end the current frame
         displayWindow();

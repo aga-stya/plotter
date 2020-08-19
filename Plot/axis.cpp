@@ -13,8 +13,8 @@ Axis::Axis(sf::Vector2f size, sf::Vector2f off):graphSize(size) ,
 }
 
 void Axis::setup(std::string fileName) {
-    //if (!font.loadFromFile("../Plot/OpenSans-Regular.ttf")) {
-    if (!font.loadFromFile("/home/pavan/plotter/Plot/OpenSans-Regular.ttf")) {
+    if (!font.loadFromFile("../Plot/OpenSans-Regular.ttf")) {
+    //if (!font.loadFromFile("/home/pavan/plotter/Plot/OpenSans-Regular.ttf")) {
         std::cout << "font file not found \n";
         throw;
     } else {
@@ -25,7 +25,7 @@ void Axis::setup(std::string fileName) {
     xAxis.setCharacterSize(16);
     xAxis.setFillColor(nameColor);
     int xPosition = offset.x + (graphSize.x / 2) - (xAxisName.size() / 2);
-    xAxis.setPosition(xPosition, 560);
+    xAxis.setPosition(xPosition, 570);
     sf::Vector2f pos = xAxis.getPosition();
 
     yAxis.setFont(font);

@@ -11,7 +11,8 @@
 #include "axis.h"
 #include "grid.h"
 #include "boundary.h"
-#include "vertices.h"
+#include "curve.h"
+#include "axisValues.h"
 
 class realTimeGraph {
 private:
@@ -31,8 +32,12 @@ private:
     std::unique_ptr<plot::Grid> ptrGrid;
     // pointer to Grid object
     std::unique_ptr<plot::Curve> ptrCurve;
+    // pointer to xAxisValues object
+    std::unique_ptr<plot::AxisValues> ptrAxisValues;
     // pointer to Boundary object
     std::vector<std::unique_ptr<plot::Boundary>> ptrBoundaries;
+    std::vector<sf::Text> xAxisNames;
+    std::vector<sf::Text> yAxisNames;
 
     //plot area specifications
     static constexpr int plotAreaWidth  = 700;

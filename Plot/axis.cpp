@@ -9,8 +9,8 @@ Axis::Axis() {
     xAxisName = "X AXIS";
     yAxisName = "Y AXIS";
     nameColor = sf::Color::Black;
-    //if (!font.loadFromFile("../Plot/OpenSans-Regular.ttf")) {
-    if (!font.loadFromFile("/home/ppa/Documents/plotter/plotter/Plot/OpenSans-Regular.ttf")) {
+    if (!font.loadFromFile(openSans)) {
+    //if (!font.loadFromFile("/home/ppa/Documents/plotter/plotter/Plot/OpenSans-Regular.ttf")) {
         std::cout << "font file not found \n";
         throw;
     } else {

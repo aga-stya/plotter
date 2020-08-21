@@ -3,13 +3,13 @@
 #include <sstream>
 #include <iomanip>
 #include <cmath>
+#include <iomanip>
 
 namespace plot {
 
 AxisValues::AxisValues(int valueStart, int valueEnd):start(valueStart), end(valueEnd) {
     nameColor = sf::Color::Black;
-    //if (!font.loadFromFile("../Plot/font.ttf")) {
-    if (!font.loadFromFile("/home/ppa/Documents/plotter/plotter/Plot/OpenSans-Regular.ttf")) {
+    if (!font.loadFromFile(fnt)) {
         std::cout << "font file not found \n";
         throw;
     } else {
@@ -18,19 +18,22 @@ AxisValues::AxisValues(int valueStart, int valueEnd):start(valueStart), end(valu
 }
 
 void AxisValues::setup() {
-    int offset = totalSpaceAvailable / numOfGrids;
+    int gridWidth = graphWidth/ numOfGrids; 
+    std::cout << "start:" << start << "\n";
     for (auto i = 0; i <= numOfGrids; i++) {
-        sf::Text temp;
-        temp.setFont(font);
-        int axisVal = start + (i * offset);
-        // divide by distanceBetweenX to account for the distance between 2 points
-        temp.setString(std::to_string(axisVal / distanceBetweenX));
-        temp.setCharacterSize(12);
-        temp.setFillColor(nameColor);
-        int xValue = xAxisStartPosition + (i * offset) - std::ceil(std::to_string(axisVal).size() / 2) - 5; 
-        //std::cout << "axisvalue:" << axisVal << ", at position:" << xValue << ":" << 555 << "\n";
-        temp.setPosition(xValue, 555);
-        axisValues.push_back(temp);
+        sf::Text gridValueText;
+        gridValueText.setFont(font);
+        //gridVal : the number that will be printed under each grid
+        double gridVal = start + (i * (gridWidth / (double)distanceBetweenX));//divide by distanceBetweenX to account for the distance between 2 points
+        std::stringstream gridValStream;
+        gridValStream << std::fixed << std::setprecision(2) << gridVal;
+        //std::cout << "axis values:" << gridValStream.str() << "\n";
+        gridValueText.setString(gridValStream.str());
+        gridValueText.setCharacterSize(12);
+        gridValueText.setFillColor(nameColor);
+        int gridValueTextPositionX = xAxisStartPosition + (i * gridWidth) - std::ceil(std::to_string(gridVal).size() / 2) - 5; 
+        gridValueText.setPosition(gridValueTextPositionX, yAxisEnd + gridValuePositionY);
+        axisValues.push_back(gridValueText);
     }
 }
 

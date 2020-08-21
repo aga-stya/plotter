@@ -9,11 +9,9 @@
 #include "Buffer/Buffer.hpp"
 
 void readInput(std::shared_ptr<Buffer> ptr) {
-  std::string filePath = "/home/ppa/Documents/plotter/plotter/sample.txt";
-  //std::string filePath = "../sample.txt";
-  std::unique_ptr<InputContext> input(new InputContext(filePath, ptr));
+  std::unique_ptr<InputContext> input(new InputContext(inputFile, ptr));
   if (input->openInput()) {
-    input->readDataIntoBuffer();
+    std::cout << "number of values read till now:" << input->readDataIntoBuffer() << "\n";
   } else {
     std::cerr << "Input cannot be opened\n";
     return;

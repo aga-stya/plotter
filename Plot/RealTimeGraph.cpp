@@ -100,10 +100,12 @@ void realTimeGraph::startRealTimeGraph() {
             //addNewPoint(val);
             ptrCurve->addNewPoint(val);
         }
-        if (count < 500)
-            ptrAxisValues = std::make_unique<plot::AxisValues>(0, 500);
+
+        int totalPointsOnGraph = graphWidth / distanceBetweenX;
+        if (count < totalPointsOnGraph)
+            ptrAxisValues = std::make_unique<plot::AxisValues>(0, totalPointsOnGraph);
         else 
-            ptrAxisValues = std::make_unique<plot::AxisValues>(count - 500, count);
+            ptrAxisValues = std::make_unique<plot::AxisValues>(count - totalPointsOnGraph, count);
 
         drawGraph();
         // end the current frame

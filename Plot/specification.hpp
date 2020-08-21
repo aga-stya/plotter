@@ -14,7 +14,7 @@ constexpr int yAxisEnd = 550;
 constexpr int graphWidth = 500;
 constexpr int graphHeight = 500;
 
-constexpr int distanceBetweenX = 3;
+constexpr int distanceBetweenX = 20;
 
 //borders
 constexpr int kBorderSize = 2;
@@ -27,4 +27,13 @@ constexpr int yAxisNamePositionX = xOffset - 30;
 constexpr int numOfGrids = 4;
 constexpr int gridPositionX = 100;
 constexpr int gridPositionY = 50;
+constexpr int gridValuePositionY = 5;
+
+//font file location
+constexpr auto openSans = "/home/pavan/Documents/fonts/OpenSans-Regular.ttf";
+constexpr auto fnt = "/home/pavan/Documents/fonts/font.ttf";
+
+//input file location
+constexpr auto inputFile = "/home/pavan/Documents/plotter_olderversion/plotter/sample.txt";
+
 #endif

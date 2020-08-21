@@ -14,10 +14,14 @@ class AxisValues
 private:
 
 public:
+    enum Axis {
+        XAXIS,
+        YAXIS,
+    };
     ////////////////////////////////////////////////////////////
     /// \brief constructor
     ////////////////////////////////////////////////////////////
-    AxisValues(int, int);
+    AxisValues(int, int, int, Axis);
     ////////////////////////////////////////////////////////////
     /// \brief setup once the Axis shape
     ///
@@ -32,10 +36,11 @@ private:
 
     /// Axes 
     std::vector<sf::Text> axisValues;
-    int start;
-    int end;
+    double startValue;
+    double endValue;
     int xAxisStartPosition = 100;
     int totalSpaceAvailable = 500;
+    int distBetweenX;
 
     sf::Font font;
 
@@ -43,6 +48,9 @@ private:
     sf::Color nameColor;
     sf::Vector2f graphSize;
     sf::Vector2f offset;
+
+    // axis under consideration
+    Axis axis;
 };
 }
 

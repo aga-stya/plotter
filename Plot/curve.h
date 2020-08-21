@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "specification.hpp"
+#include "axisValues.h"
 
 namespace plot {
 
@@ -22,7 +23,15 @@ public:
     // start the loop for the graph
     void startRealTimeGraph();
     // move the vertices to the left to accommodate the new vertice
-    void reassignVertices();
+    void reassignVertices(double&, double&);
+
+    double getMinInCurve() {
+        return minInCurve;
+    }
+    double getMaxInCurve() {
+        return maxInCurve;
+    }
+
 private:
     ////////////////////////////////////////////////////////////
     /// \brief sfml method for drawing
@@ -33,6 +42,9 @@ private:
     sf::Color color;
     // vector that holds the points to be plotted
     std::vector<sf::Vertex> curve;
+    std::unique_ptr<plot::AxisValues> ptrYAxisValues;
+    double minInCurve;
+    double maxInCurve;
 };
 }
 

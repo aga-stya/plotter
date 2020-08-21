@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <algorithm>
 #include "RealTimeGraph.hpp"
 
 realTimeGraph::realTimeGraph(std::string nameOfTheWindow, std::shared_ptr<Buffer> ptr)
@@ -54,7 +55,8 @@ void realTimeGraph::drawGraph() {
     window->draw(*ptrGrid);
     window->draw(*ptrAxis);
     window->draw(*ptrCurve);
-    window->draw(*ptrAxisValues);
+    window->draw(*ptrXAxisValues);
+    window->draw(*ptrYAxisValues);
 }
 
 bool realTimeGraph::isWindowOpen() {
@@ -84,6 +86,8 @@ void realTimeGraph::displayWindow() {
 void realTimeGraph::startRealTimeGraph() {
     int i,j;
     static int count = 0;
+    double minOfAll = 0;
+    double maxOfAll = 0;
     // run the program as long as the window is open
     while (isWindowOpen())
     {
@@ -96,17 +100,19 @@ void realTimeGraph::startRealTimeGraph() {
         //add new point if there is a new value in the file
         double val = 0.0;
         if (ptrBuffer->getValueFromBufferQueue(val)) {
-            std::cout << "total values written:" << ++count << "\n";
-            //addNewPoint(val);
+            minOfAll = std::min(minOfAll, val);
+            maxOfAll = std::min(maxOfAll, val);
+            std::cout << "new value:" << val << ", total values written:" << ++count << "\n";
             ptrCurve->addNewPoint(val);
         }
 
         int totalPointsOnGraph = graphWidth / distanceBetweenX;
         if (count < totalPointsOnGraph)
-            ptrAxisValues = std::make_unique<plot::AxisValues>(0, totalPointsOnGraph);
+            ptrXAxisValues = std::make_unique<plot::AxisValues>(0, totalPointsOnGraph, distanceBetweenX, plot::AxisValues::Axis::XAXIS);
         else 
-            ptrAxisValues = std::make_unique<plot::AxisValues>(count - totalPointsOnGraph, count);
+            ptrXAxisValues = std::make_unique<plot::AxisValues>(count - totalPointsOnGraph, count, distanceBetweenX, plot::AxisValues::Axis::XAXIS);
 
+        ptrYAxisValues = std::make_unique<plot::AxisValues>(ptrCurve->getMinInCurve(), ptrCurve->getMaxInCurve(), 1, plot::AxisValues::Axis::YAXIS); 
         drawGraph();
         // end the current frame
         displayWindow();

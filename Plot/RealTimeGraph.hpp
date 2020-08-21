@@ -33,7 +33,9 @@ private:
     // pointer to Grid object
     std::unique_ptr<plot::Curve> ptrCurve;
     // pointer to xAxisValues object
-    std::unique_ptr<plot::AxisValues> ptrAxisValues;
+    std::unique_ptr<plot::AxisValues> ptrXAxisValues;
+    // pointer to yAxisValues object
+    std::unique_ptr<plot::AxisValues> ptrYAxisValues;
     // pointer to Boundary object
     std::vector<std::unique_ptr<plot::Boundary>> ptrBoundaries;
     std::vector<sf::Text> xAxisNames;

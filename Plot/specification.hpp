@@ -14,7 +14,7 @@ constexpr int yAxisEnd = 550;
 constexpr int graphWidth = 500;
 constexpr int graphHeight = 500;
 
-constexpr int distanceBetweenX = 20;
+constexpr int distanceBetweenX = 1;
 
 //borders
 constexpr int kBorderSize = 2;
@@ -34,6 +34,8 @@ constexpr auto openSans = "/home/pavan/Documents/fonts/OpenSans-Regular.ttf";
 constexpr auto fnt = "/home/pavan/Documents/fonts/font.ttf";
 
 //input file location
-constexpr auto inputFile = "/home/pavan/Documents/plotter_olderversion/plotter/sample.txt";
+//constexpr auto inputFile = "/home/pavan/Documents/plotter_olderversion/plotter/sample_ramp.txt";
+//constexpr auto inputFile = "/home/pavan/Documents/plotter_olderversion/plotter/sample.txt";
+constexpr auto inputFile = "/home/pavan/Documents/plotter_olderversion/plotter/Plot/rampData.txt";
 
 #endif

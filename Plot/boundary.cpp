@@ -6,7 +6,9 @@ namespace plot {
 Boundary::Boundary(sf::Vector2f boundaryPosition, sf::Vector2f boundarySize):
                                                             position(boundaryPosition), 
                                                             size(boundarySize) {
-    color = sf::Color(150, 150, 150);
+    sf::Color color = sf::Color(150, 150, 150);
+    setColor(color);
+
 }
 
 void Boundary::setup(void) {

@@ -12,24 +12,31 @@ class Grid
         : public sf::Drawable
         , public sf::Transformable {
 public:
-    ////////////////////////////////////////////////////////////
-    /// \brief constructor
-    ////////////////////////////////////////////////////////////
+    /**
+     * constructor
+     */
     Grid();
-    ////////////////////////////////////////////////////////////
-    /// \brief setup once the grid shape
-    ///
-    /// \param size grid size
-    ////////////////////////////////////////////////////////////
-    void setup(void);
+
+    /**
+     * setColor
+     */
+    void setColor(const sf::Color &color) {
+        gridColor = color;
+    }
 private:
-    ////////////////////////////////////////////////////////////
-    /// \brief sfml method for drawing
-    ////////////////////////////////////////////////////////////
+    
+    /**
+     * setup
+     */
+    void setup(void);
+
+    /**
+     * sfml method for drawing
+     */
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     /// grid lines
-    sf::VertexArray vertices_;
+    sf::VertexArray vertices;
 
     /// grid color
     sf::Color gridColor;

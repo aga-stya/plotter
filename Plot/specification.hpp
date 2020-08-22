@@ -3,6 +3,18 @@
 
 #include <SFML/Graphics.hpp>
 
+//plot area specifications
+static constexpr int wholeAreaWidth  = 700;
+static constexpr int wholeAreaHeight = 600;
+static constexpr int wholeAreaPositionX = 0;
+static constexpr int wholeAreaPositionY = 0;
+
+//menu area specifications
+static constexpr int menuAreaWidth    = 300;
+static constexpr int menuAreaHeight   = 600;
+static constexpr int menuAreaPositionX = 700;
+static constexpr int menuAreaPositionY = 0;
+
 constexpr int xOffset = 100; 
 constexpr int yOffset = 50;
 

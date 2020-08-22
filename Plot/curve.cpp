@@ -8,6 +8,7 @@ Curve::Curve() {
     color = sf::Color(150, 150, 150);
     maxInCurve = std::numeric_limits<int>::min();
     minInCurve = std::numeric_limits<int>::max();
+    setup();
 }
 
 void Curve::setup(void) {

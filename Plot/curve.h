@@ -15,7 +15,6 @@ class Curve
 public:
     Curve();
 
-    void setup();
     // add a new vertex with y co-ordinate only
     void addNewPoint (double y);
     // increase the x co-ordinate
@@ -33,9 +32,13 @@ public:
     }
 
 private:
-    ////////////////////////////////////////////////////////////
-    /// \brief sfml method for drawing
-    ////////////////////////////////////////////////////////////
+    /**
+     * setup
+     */
+    void setup();
+    /**
+     * sfml method for drawing
+     */
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     /// grid color

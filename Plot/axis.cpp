@@ -6,21 +6,14 @@
 namespace plot {
 
 Axis::Axis() {
-    xAxisName = "X AXIS";
-    yAxisName = "Y AXIS";
-    nameColor = sf::Color::Black;
-    if (!font.loadFromFile(openSans)) {
-    //if (!font.loadFromFile("/home/ppa/Documents/plotter/plotter/Plot/OpenSans-Regular.ttf")) {
-        std::cout << "font file not found \n";
-        throw;
-    } else {
-        std::cout << "font file found\n";
-    }
-
+    setXAxisName("X AXIS");
+    setYAxisName("Y AXIS");
+    setColor(sf::Color::Black);
+    setFont(openSans);
+    setup();
 }
 
-void Axis::setup(std::string fileName) {
-    
+void Axis::setup() {
     xAxis.setFont(font);
     xAxis.setString(xAxisName);
     xAxis.setCharacterSize(16);

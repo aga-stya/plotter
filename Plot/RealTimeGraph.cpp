@@ -23,17 +23,14 @@ void realTimeGraph::initializeWindow(void) {
         boundary->setup();
 
     window.reset(new sf::RenderWindow (sf::VideoMode(windowWidth, windowHeight), "My window"));
-    ptrAxis->setup("font.ttf");
-    ptrGrid->setup();
-    ptrCurve->setup();
 }
 
 void realTimeGraph::prepareBoundary(void) {
-    std::unique_ptr<plot::Boundary> plotBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(plotAreaPositionX, plotAreaPositionY), 
-                                                                                     sf::Vector2f(plotAreaWidth, plotAreaHeight));
+    std::unique_ptr<plot::Boundary> plotBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(wholeAreaPositionX, wholeAreaPositionY), 
+                                                                                     sf::Vector2f(wholeAreaWidth, wholeAreaHeight));
     ptrBoundaries.push_back(std::move(plotBoundary));
-    std::unique_ptr<plot::Boundary> graphBoundary = std::make_unique<plot::Boundary>(sf::Vector2f(gridAreaPositionX, gridAreaPositionY), 
-                                                                                     sf::Vector2f(gridAreaWidth, gridAreaHeight));
+    std::unique_ptr<plot::Boundary> graphBoundary = std::make_unique<plot::Boundary>(sf::Vector2f(xAxisStart, yAxisStart), 
+                                                                                     sf::Vector2f(graphWidth, graphHeight));
     ptrBoundaries.push_back(std::move(graphBoundary));
     std::unique_ptr<plot::Boundary> menuBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(menuAreaPositionX, menuAreaPositionY), 
                                                                                      sf::Vector2f(menuAreaWidth, menuAreaHeight));
@@ -84,7 +81,6 @@ void realTimeGraph::displayWindow() {
 }
 
 void realTimeGraph::startRealTimeGraph() {
-    int i,j;
     static int count = 0;
     double minOfAll = 0;
     double maxOfAll = 0;

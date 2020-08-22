@@ -38,27 +38,6 @@ private:
     std::unique_ptr<plot::AxisValues> ptrYAxisValues;
     // pointer to Boundary object
     std::vector<std::unique_ptr<plot::Boundary>> ptrBoundaries;
-    std::vector<sf::Text> xAxisNames;
-    std::vector<sf::Text> yAxisNames;
-
-    //plot area specifications
-    static constexpr int plotAreaWidth  = 700;
-    static constexpr int plotAreaHeight = 600;
-    static constexpr int plotAreaPositionX = 0;
-    static constexpr int plotAreaPositionY = 0;
-    //grid area specifications
-    static constexpr int gridAreaWidth    = 500;
-    static constexpr int gridAreaHeight   = 500;
-    static constexpr int gridAreaPositionX = 100;
-    static constexpr int gridAreaPositionY = 50;
-    //menu area specifications
-    static constexpr int menuAreaWidth    = 300;
-    static constexpr int menuAreaHeight   = 600;
-    static constexpr int menuAreaPositionX = 700;
-    static constexpr int menuAreaPositionY = 0;
-    //offset
-    static constexpr int xAxisOffset = 100;
-    static constexpr int yAxisOffset = 50;
 
 private:
     // prepare the window for the plot

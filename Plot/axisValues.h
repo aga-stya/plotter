@@ -1,6 +1,7 @@
 #ifndef AXIS_VALUES_H
 #define AXIS_VALUES_H 
 
+#include <iostream>
 #include <vector>
 #include <SFML/Graphics.hpp>
 
@@ -18,39 +19,54 @@ public:
         XAXIS,
         YAXIS,
     };
-    ////////////////////////////////////////////////////////////
-    /// \brief constructor
-    ////////////////////////////////////////////////////////////
+    /**
+     * \brief constructor
+     */
     AxisValues(int, int, int, Axis);
-    ////////////////////////////////////////////////////////////
-    /// \brief setup once the Axis shape
-    ///
-    /// \param size Axis size
-    ////////////////////////////////////////////////////////////
-    void setup();
+
+    /**
+     * set the color for axisValue
+     */
+    void setColor(const sf::Color &color) {
+        axisNameColor = color;
+    }
+
+    /**
+     * get the color of axisValue
+     */
+    sf::Color getColor(void) {
+        return axisNameColor;
+    }
+
+    /**
+     * set the color for axisValue
+     */
+    void setFont(std::string_view fontFile) {
+        if (!font.loadFromFile(std::string(fontFile))) {
+            std::cerr << "font file for axisValues not found\n";
+            throw;
+        }
+    }
+
 private:
-    ////////////////////////////////////////////////////////////
-    /// \brief sfml method for drawing
-    ////////////////////////////////////////////////////////////
+    /**
+     * sfml method for drawing
+     */
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    /**
+     * \brief setup once the Axis shape
+     */
+    void setup();
 
     /// Axes 
     std::vector<sf::Text> axisValues;
     double startValue;
     double endValue;
-    int xAxisStartPosition = 100;
-    int totalSpaceAvailable = 500;
-    int distBetweenX;
-
+    int distBetweenPoints;
     sf::Font font;
-
-    /// Axis color
-    sf::Color nameColor;
-    sf::Vector2f graphSize;
-    sf::Vector2f offset;
-
-    // axis under consideration
-    Axis axis;
+    sf::Color axisNameColor; // Axis color
+    Axis axisName; // axis under consideration
 };
 }
 

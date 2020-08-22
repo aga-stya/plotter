@@ -31,11 +31,12 @@ constexpr int gridValuePositionY = 5;
 
 //font file location
 constexpr auto openSans = "/home/pavan/Documents/fonts/OpenSans-Regular.ttf";
+//constexpr auto fnt = "/home/pavan/Documents/fonts/font.ttf";
 constexpr auto fnt = "/home/pavan/Documents/fonts/font.ttf";
 
 //input file location
 //constexpr auto inputFile = "/home/pavan/Documents/plotter_olderversion/plotter/sample_ramp.txt";
 //constexpr auto inputFile = "/home/pavan/Documents/plotter_olderversion/plotter/sample.txt";
-constexpr auto inputFile = "/home/pavan/Documents/plotter_olderversion/plotter/Plot/rampData.txt";
+constexpr auto inputFile = "/home/pavan//plotter/Plot/rampData.txt";
 
 #endif

@@ -22,19 +22,19 @@ void realTimeGraph::initializeWindow(void) {
     for (auto &boundary:ptrBoundaries)
         boundary->setup();
 
-    window.reset(new sf::RenderWindow (sf::VideoMode(windowWidth, windowHeight), "My window"));
+    window.reset(new sf::RenderWindow (sf::VideoMode(plotAreaWidth, plotAreaHeight), "My window"));
 }
 
 void realTimeGraph::prepareBoundary(void) {
-    std::unique_ptr<plot::Boundary> plotBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(wholeAreaPositionX, wholeAreaPositionY), 
-                                                                                     sf::Vector2f(wholeAreaWidth, wholeAreaHeight));
+    std::unique_ptr<plot::Boundary> plotBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(plotAreaPositionX, plotAreaPositionY), 
+                                                                                     sf::Vector2f(plotAreaWidth, plotAreaHeight));
     ptrBoundaries.push_back(std::move(plotBoundary));
     std::unique_ptr<plot::Boundary> graphBoundary = std::make_unique<plot::Boundary>(sf::Vector2f(xAxisStart, yAxisStart), 
                                                                                      sf::Vector2f(graphWidth, graphHeight));
     ptrBoundaries.push_back(std::move(graphBoundary));
-    std::unique_ptr<plot::Boundary> menuBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(menuAreaPositionX, menuAreaPositionY), 
-                                                                                     sf::Vector2f(menuAreaWidth, menuAreaHeight));
-    ptrBoundaries.push_back(std::move(menuBoundary));
+    //std::unique_ptr<plot::Boundary> menuBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(menuAreaPositionX, menuAreaPositionY), 
+    //                                                                                 sf::Vector2f(menuAreaWidth, menuAreaHeight));
+    //ptrBoundaries.push_back(std::move(menuBoundary));
 }
 
 void realTimeGraph::changeWindowName(std::string newName) {

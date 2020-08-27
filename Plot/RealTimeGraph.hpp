@@ -52,19 +52,17 @@ public:
     // Destructor
     ~realTimeGraph();
     // rename the window
-    void changeWindowName(std::string newName); 
+    void changeWindowName(std::string_view newName); 
     //Clear the window with a particular color
-    void clearWindow (sf::Color color);
+    void clearWindow(sf::Color color);
     // check if window is open
-    bool isWindowOpen ();
+    bool isWindowOpen() const;
     // check if somebody wants to close a window
-    void checkCloseWindow();
-    // check if there is an event
-    bool isThereAnEvent();
+    void checkCloseWindow() const;
     // draw graph 
-    void drawGraph();
+    void drawGraph() const;
     // display window
-    void displayWindow();
+    void displayWindow() const;
     // start the loop for the graph
     void startRealTimeGraph();
 };

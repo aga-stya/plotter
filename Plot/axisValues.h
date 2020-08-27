@@ -15,12 +15,12 @@ class AxisValues
 private:
 
 public:
-    enum Axis {
+    enum class Axis {
         XAXIS,
         YAXIS,
     };
     /**
-     * \brief constructor
+     * constructor
      */
     AxisValues(int, int, int, Axis);
 
@@ -34,7 +34,7 @@ public:
     /**
      * get the color of axisValue
      */
-    sf::Color getColor(void) {
+    sf::Color getColor(void) const{
         return axisNameColor;
     }
 
@@ -48,6 +48,20 @@ public:
         }
     }
 
+    /**
+     * set the character size of the value displayed 
+     */
+    void setCharacterSize(unsigned int characterSize) {
+        this->characterSize = characterSize;
+    }
+
+    /**
+     * get the character size of axisValue
+     */
+    unsigned int getCharacterSize(void) const{
+        return characterSize;
+    }
+
 private:
     /**
      * sfml method for drawing
@@ -55,18 +69,20 @@ private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     /**
-     * \brief setup once the Axis shape
+     * setup the values 
      */
     void setup();
 
-    /// Axes 
+    // array of values that will be displayed for the axis
     std::vector<sf::Text> axisValues;
+    // start value of the values displayed for the axis
     double startValue;
+    // end value of the values displayed for the axis
     double endValue;
-    int distBetweenPoints;
     sf::Font font;
-    sf::Color axisNameColor; // Axis color
-    Axis axisName; // axis under consideration
+    sf::Color axisNameColor; 
+    unsigned int characterSize;
+    Axis axisName; 
 };
 }
 

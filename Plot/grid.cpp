@@ -27,10 +27,6 @@ void Grid::setup(void)
         vertices.append(sf::Vertex(sf::Vector2f(i*offset + gridPositionX, gridPositionY), gridColor));
         vertices.append(sf::Vertex(sf::Vector2f(i*offset + gridPositionX, graphHeight + gridPositionY), gridColor));
     }
-
-    //std::cout << "vertices: \n";
-    //for (auto i = 0; i < vertices_.getVertexCount(); i++)
-    //    std::cout << vertices_[i].position.x << "," << vertices_[i].position.y << "\n";
 }
 
 void Grid::draw(sf::RenderTarget& target, sf::RenderStates states) const

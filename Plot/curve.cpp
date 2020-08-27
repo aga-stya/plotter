@@ -16,7 +16,6 @@ void Curve::setup(void) {
 
 void Curve::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     states.transform *= getTransform();
-    //target.draw(&curve[0], curve.size(), sf::PrimitiveType::LineStrip);
     double newValue = 0.0;
     // remap the vertices based on minInCurve and maxInCurve
     std::vector<sf::Vertex> drawCurve;
@@ -29,15 +28,13 @@ void Curve::draw(sf::RenderTarget& target, sf::RenderStates states) const {
         newValue = (newValue / 100.0) * 500 ;
         //invert the value because for y axis the numbers actually is opposite way
         newValue = 550 - newValue;
-        //std::cout << "oldvalue:" << vertex.position.y << ", maxInCurve:" << maxInCurve << ", minInCurve:" << minInCurve << ", newValue:" << newValue << "\n";
         sf::Vertex temp(sf::Vector2f(vertex.position.x, newValue), sf::Color::Blue);
         drawCurve.push_back(sf::Vertex(sf::Vector2f(vertex.position.x, newValue), sf::Color::Blue));
     }
     target.draw(&drawCurve[0], drawCurve.size(), sf::PrimitiveType::LineStrip);
 }
 
-// add a new vertex with y co-ordinate only
-void Curve::addNewPoint (double y) {
+void Curve::addNewPoint (const double y) {
     static int  current_x = 100;
     static bool startRemovingOldOnes = false;
     if (startRemovingOldOnes) {
@@ -55,11 +52,8 @@ void Curve::addNewPoint (double y) {
             startRemovingOldOnes = true;
         }
     }
-    //std::cout << "min:" << minInCurve << ", max:" << maxInCurve << "\n";
-    //std::cout << "curve size:" << curve.size() << "\n";
 }
 
-// move the vertices to the left to accommodate the new vertice
 void Curve::reassignVertices(double &minInCurve, double &maxInCurve) {
     minInCurve = std::numeric_limits<int>::max();
     maxInCurve = std::numeric_limits<int>::min();

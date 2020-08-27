@@ -15,10 +15,11 @@ class Axis
 private:
 
 public:
-    ////////////////////////////////////////////////////////////
-    /// \brief constructor
-    ////////////////////////////////////////////////////////////
-    Axis(std::string, std::string);
+    /**
+     * constructor
+     */
+    Axis(std::string_view, std::string_view);
+
     /**
      * set the color of the axis
      */
@@ -40,9 +41,21 @@ public:
         yAxisName = std::string(name);
     }
 
+    /**
+     * set the name of the X Axis
+     */
+    void setCharacterSize(unsigned int characterSize) {
+        this->characterSize = characterSize;
+    }
+
+    /**
+     * set the name of the Y Axis
+     */
+    unsigned int getCharacterSize(void) {
+        return characterSize;
+    }
 
 private:
-
     /**
      * set the font for axis 
      */
@@ -63,14 +76,13 @@ private:
      */
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-    /// Axes 
     std::string xAxisName;
     std::string yAxisName;
     sf::Text xAxis;
     sf::Text yAxis;
     sf::Font font;
-    /// Axis color
-    sf::Color nameColor;
+    sf::Color nameColor; //color of the Axis
+    unsigned int characterSize;
 };
 }
 

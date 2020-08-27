@@ -35,15 +35,15 @@ void realTimeGraph::prepareBoundary(void) {
     ptrBoundaries.push_back(std::move(graphBoundary));
 }
 
-void realTimeGraph::changeWindowName(std::string newName) {
-    window->setTitle(newName);
+void realTimeGraph::changeWindowName(std::string_view newName) {
+    window->setTitle(std::string(newName));
 }
 
 void realTimeGraph::clearWindow (sf::Color color) {
     window->clear(color);
 }
 
-void realTimeGraph::drawGraph() {
+void realTimeGraph::drawGraph() const {
     for (auto &boundary:ptrBoundaries) {
         window->draw(*boundary);
     }
@@ -54,15 +54,11 @@ void realTimeGraph::drawGraph() {
     window->draw(*ptrYAxisValues);
 }
 
-bool realTimeGraph::isWindowOpen() {
+bool realTimeGraph::isWindowOpen() const {
     return window->isOpen();
 }
 
-bool realTimeGraph::isThereAnEvent() {
-    return window->pollEvent(*event);
-}
-
-void realTimeGraph::checkCloseWindow() {
+void realTimeGraph::checkCloseWindow() const {
     // check all the window's events that were triggered since the last iteration of the loop
     while (window->pollEvent(*event)) {
         // "close requested" event: we close the window
@@ -73,7 +69,7 @@ void realTimeGraph::checkCloseWindow() {
     }
 }
 
-void realTimeGraph::displayWindow() {
+void realTimeGraph::displayWindow() const {
     // end the current frame
     window->display();
 }

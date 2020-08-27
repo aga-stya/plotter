@@ -7,12 +7,15 @@
 
 namespace plot {
 
-AxisValues::AxisValues(int valueStart, int valueEnd, int distBtwPts, Axis axisType)
-                                                    :startValue(valueStart), endValue(valueEnd),
-                                                     distBetweenPoints(distBtwPts), axisName(axisType){
+AxisValues::AxisValues(int valueStart, int valueEnd, 
+                       int distBtwPts, Axis axisType)
+                      :startValue(valueStart), 
+                       endValue(valueEnd),
+                       axisName(axisType) {
     setFont(fnt);
-    setup();
     setColor(sf::Color::Black);
+    setCharacterSize(12); //default character size
+    setup();
 }
 
 void AxisValues::setup() {
@@ -27,17 +30,15 @@ void AxisValues::setup() {
         gridValStream << std::fixed << std::setprecision(2) << gridVal;
         //std::cout << "axis values:" << gridValStream.str() << "\n";
         gridValueText.setString(gridValStream.str());
-        gridValueText.setCharacterSize(12);
+        gridValueText.setCharacterSize(characterSize);
         gridValueText.setFillColor(axisNameColor);
         double gridValueTextPosition = 0;
         if (axisName == AxisValues::Axis::XAXIS) {
             gridValueTextPosition = (double)xAxisStart+ (i * gridWidth) - (double)std::ceil(std::to_string(gridVal).size() / 2) - 5; 
             gridValueText.setPosition(gridValueTextPosition, yAxisEnd + gridValuePositionY);
-            //std::cout << "x axis values position:" << gridValueText.getPosition().x << "," << gridValueText.getPosition().y << "\n";
         } else {
-            gridValueTextPosition = 550.0 - (i * gridWidth); 
-            gridValueText.setPosition(xAxisStart - std::to_string(gridVal).size() * 3, gridValueTextPosition);
-            //std::cout << "y axis values position:" << gridValueText.getPosition().x << "," << gridValueText.getPosition().y << "\n";
+            gridValueTextPosition = static_cast<double>(yAxisEnd) - (i * gridWidth) - (characterSize); 
+            gridValueText.setPosition(xAxisStart - std::to_string(gridVal).size() * 3, gridValueTextPosition); //multiply by 3 is an adjustment made for proper positioning of the point
         }
         axisValues.push_back(gridValueText);
     }

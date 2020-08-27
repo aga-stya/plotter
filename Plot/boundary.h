@@ -29,6 +29,12 @@ public:
         boundaryColor = color;
     }
 
+    /**
+     * get Color
+     */
+    sf::Color getColor() const {
+        return boundaryColor;
+    }
 private:
     /**
      * sfml method for drawing

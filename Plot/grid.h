@@ -35,10 +35,10 @@ private:
      */
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-    /// grid lines
+    // grid line vertices
     sf::VertexArray vertices;
 
-    /// grid color
+    // grid color
     sf::Color gridColor;
 };
 }

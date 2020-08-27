@@ -15,27 +15,29 @@ class Curve
 public:
     Curve();
 
-    // add a new vertex with y co-ordinate only
-    void addNewPoint (double y);
-    // increase the x co-ordinate
-    void increaseX();
-    // start the loop for the graph
-    void startRealTimeGraph();
-    // move the vertices to the left to accommodate the new vertice
-    void reassignVertices(double&, double&);
-
-    double getMinInCurve() {
+    double getMinInCurve() const {
         return minInCurve;
     }
-    double getMaxInCurve() {
+    double getMaxInCurve() const {
         return maxInCurve;
     }
+
+    /**
+     * add new vertex with only y co-ordinate
+     */
+    void addNewPoint (const double y);
 
 private:
     /**
      * setup
      */
     void setup();
+
+    /**
+     * move the vertices to the left to accommodate the new vertice and calculate new max and min
+     */
+    void reassignVertices(double&, double&);
+
     /**
      * sfml method for drawing
      */

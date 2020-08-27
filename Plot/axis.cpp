@@ -5,9 +5,8 @@
 
 namespace plot {
 
-Axis::Axis() {
-    setXAxisName("X AXIS");
-    setYAxisName("Y AXIS");
+Axis::Axis(std::string xAxisName, std::string yAxisName) 
+                : xAxisName(xAxisName), yAxisName(yAxisName) {
     setColor(sf::Color::Black);
     setFont(openSans);
     setup();

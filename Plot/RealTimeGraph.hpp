@@ -16,21 +16,16 @@
 
 class realTimeGraph {
 private:
-    // create the window
     std::shared_ptr<sf::RenderWindow> window;
-    // check all the window's events that were triggered since the last iteration of the loop
+    // window's events 
     std::shared_ptr<sf::Event> event;
-    // max width of the window
-    int windowWidth = 1000;
-    // max height of the window
-    int windowHeight = 600;
     // pointer to Buffer containing input values
     std::shared_ptr<Buffer> ptrBuffer;
     // pointer to Axis object
     std::unique_ptr<plot::Axis> ptrAxis;
     // pointer to Grid object
     std::unique_ptr<plot::Grid> ptrGrid;
-    // pointer to Grid object
+    // pointer to Curve object
     std::unique_ptr<plot::Curve> ptrCurve;
     // pointer to xAxisValues object
     std::unique_ptr<plot::AxisValues> ptrXAxisValues;
@@ -38,6 +33,12 @@ private:
     std::unique_ptr<plot::AxisValues> ptrYAxisValues;
     // pointer to Boundary object
     std::vector<std::unique_ptr<plot::Boundary>> ptrBoundaries;
+    // window Name
+    std::string windowName;
+    // xAxis Name
+    std::string xAxisName;
+    // yAxis Name
+    std::string yAxisName;
 
 private:
     // prepare the window for the plot
@@ -47,8 +48,7 @@ private:
 
 public:
     //Initialize the window within which the graph is to be created
-    //realTimeGraph(int width, int height, std::string nameOfTheWindow, std::shared_ptr<Buffer> ptr);
-    realTimeGraph(std::string nameOfTheWindow, std::shared_ptr<Buffer> ptr);
+    realTimeGraph(std::shared_ptr<Buffer>, std::string, std::string, std::string);
     // Destructor
     ~realTimeGraph();
     // rename the window

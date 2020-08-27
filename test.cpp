@@ -19,7 +19,7 @@ void readInput(std::shared_ptr<Buffer> ptr) {
 }
 
 void plotting(std::shared_ptr<Buffer> ptr) {
-  realTimeGraph MyGraph("My Window", ptr);
+  realTimeGraph MyGraph(ptr, "Plot ramp", "This is x axis", "This is y axis");
   MyGraph.startRealTimeGraph();
 }
 

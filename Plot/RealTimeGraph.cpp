@@ -4,10 +4,12 @@
 #include <algorithm>
 #include "RealTimeGraph.hpp"
 
-realTimeGraph::realTimeGraph(std::string nameOfTheWindow, std::shared_ptr<Buffer> ptr)
-              :ptrBuffer(ptr){ 
+realTimeGraph::realTimeGraph(std::shared_ptr<Buffer> ptr, std::string windowName, 
+                             std::string xAxisName, std::string yAxisName)
+                            :ptrBuffer(ptr), windowName(windowName), 
+                             xAxisName(xAxisName), yAxisName(yAxisName) { 
     ptrGrid = std::make_unique<plot::Grid>();
-    ptrAxis = std::make_unique<plot::Axis>(); 
+    ptrAxis = std::make_unique<plot::Axis>(xAxisName, yAxisName); 
     ptrCurve = std::make_unique<plot::Curve>();
     // create the window
     initializeWindow();
@@ -21,8 +23,7 @@ void realTimeGraph::initializeWindow(void) {
     prepareBoundary();
     for (auto &boundary:ptrBoundaries)
         boundary->setup();
-
-    window.reset(new sf::RenderWindow (sf::VideoMode(plotAreaWidth, plotAreaHeight), "My window"));
+    window.reset(new sf::RenderWindow (sf::VideoMode(plotAreaWidth, plotAreaHeight), windowName));
 }
 
 void realTimeGraph::prepareBoundary(void) {
@@ -32,9 +33,6 @@ void realTimeGraph::prepareBoundary(void) {
     std::unique_ptr<plot::Boundary> graphBoundary = std::make_unique<plot::Boundary>(sf::Vector2f(xAxisStart, yAxisStart), 
                                                                                      sf::Vector2f(graphWidth, graphHeight));
     ptrBoundaries.push_back(std::move(graphBoundary));
-    //std::unique_ptr<plot::Boundary> menuBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(menuAreaPositionX, menuAreaPositionY), 
-    //                                                                                 sf::Vector2f(menuAreaWidth, menuAreaHeight));
-    //ptrBoundaries.push_back(std::move(menuBoundary));
 }
 
 void realTimeGraph::changeWindowName(std::string newName) {

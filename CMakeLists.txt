@@ -17,6 +17,6 @@ add_subdirectory(Input)
 add_subdirectory(Buffer)
 add_subdirectory(Plot)
 # add the executable
-add_executable(tester test.cpp)
+add_executable(plotter main.cpp)
 # link with Input directory
-target_link_libraries(tester Input Plot pthread)
+target_link_libraries(plotter Input Plot pthread)

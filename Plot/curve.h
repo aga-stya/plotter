@@ -21,6 +21,9 @@ public:
     double getMaxInCurve() const {
         return maxInCurve;
     }
+    std::size_t getCurveSize() const {
+        return curve.size();
+    }
 
     /**
      * add new vertex with only y co-ordinate

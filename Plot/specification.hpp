@@ -26,14 +26,14 @@ constexpr int yAxisEnd = 550;
 constexpr int graphWidth = 500;
 constexpr int graphHeight = 500;
 
-constexpr int distanceBetweenX = 1;
+constexpr int distanceBetweenPoints = 1;
 
 //borders
 constexpr int kBorderSize = 2;
 
 //axis
 constexpr int xAxisNamePositionY = yAxisEnd + 20;
-constexpr int yAxisNamePositionX = xOffset - 30;
+constexpr int yAxisNamePositionX = xOffset - 50;
 
 //grid
 constexpr int numOfGrids = 4;

@@ -9,7 +9,7 @@ Axis::Axis(std::string_view xAxisName, std::string_view yAxisName)
                 : xAxisName(std::string(xAxisName)), yAxisName(std::string(yAxisName)) {
     setColor(sf::Color::Black);
     setFont(openSans);
-    setCharacterSize(14);
+    setCharacterSize(18);
     setup();
 }
 

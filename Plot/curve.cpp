@@ -47,7 +47,7 @@ void Curve::addNewPoint (const double y) {
         minInCurve = std::min(minInCurve, y);
         maxInCurve = std::max(maxInCurve, y);
         curve.push_back(sf::Vertex(sf::Vector2f(current_x, y), sf::Color::Blue));
-        current_x += distanceBetweenX;
+        current_x += distanceBetweenPoints;
         if (current_x >= xAxisEnd) {
             startRemovingOldOnes = true;
         }

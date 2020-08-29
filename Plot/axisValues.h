@@ -22,7 +22,7 @@ public:
     /**
      * constructor
      */
-    AxisValues(int, int, int, Axis);
+    AxisValues(int, int, int, Axis, std::size_t);
 
     /**
      * set the color for axisValue
@@ -73,6 +73,12 @@ private:
      */
     void setup();
 
+    /**
+     * helper function to prepare the sf::Text object based on the character size, 
+     * font etc.
+     */
+    sf::Text prepareTextToPrint(std::string_view, const double, const double) const;
+
     // array of values that will be displayed for the axis
     std::vector<sf::Text> axisValues;
     // start value of the values displayed for the axis
@@ -83,6 +89,7 @@ private:
     sf::Color axisNameColor; 
     unsigned int characterSize;
     Axis axisName; 
+    std::size_t currentCurveSize;
 };
 }
 

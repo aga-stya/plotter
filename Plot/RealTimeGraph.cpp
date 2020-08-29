@@ -96,13 +96,19 @@ void realTimeGraph::startRealTimeGraph() {
             ptrCurve->addNewPoint(val);
         }
 
-        int totalPointsOnGraph = graphWidth / distanceBetweenX;
+        int totalPointsOnGraph = graphWidth / distanceBetweenPoints;
         if (count < totalPointsOnGraph)
-            ptrXAxisValues = std::make_unique<plot::AxisValues>(0, totalPointsOnGraph, distanceBetweenX, plot::AxisValues::Axis::XAXIS);
+            ptrXAxisValues = std::make_unique<plot::AxisValues>(0, totalPointsOnGraph, 
+                                                               distanceBetweenPoints, plot::AxisValues::Axis::XAXIS,
+                                                               ptrCurve->getCurveSize());
         else 
-            ptrXAxisValues = std::make_unique<plot::AxisValues>(count - totalPointsOnGraph, count, distanceBetweenX, plot::AxisValues::Axis::XAXIS);
+            ptrXAxisValues = std::make_unique<plot::AxisValues>(count - totalPointsOnGraph, count, 
+                                                               distanceBetweenPoints, plot::AxisValues::Axis::XAXIS,
+                                                               ptrCurve->getCurveSize());
 
-        ptrYAxisValues = std::make_unique<plot::AxisValues>(ptrCurve->getMinInCurve(), ptrCurve->getMaxInCurve(), 1, plot::AxisValues::Axis::YAXIS); 
+        ptrYAxisValues = std::make_unique<plot::AxisValues>(ptrCurve->getMinInCurve(), ptrCurve->getMaxInCurve(), 
+                                                            1, plot::AxisValues::Axis::YAXIS,
+                                                            ptrCurve->getCurveSize()); 
         drawGraph();
         // end the current frame
         displayWindow();

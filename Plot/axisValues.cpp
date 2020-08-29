@@ -37,22 +37,24 @@ void AxisValues::setup() {
         double actualGridWidth = (endValue - startValue)/ (double)numOfGrids;
         //gridVal : the number that will be printed under each grid
         double gridVal = startValue + (i * actualGridWidth);//divide by distanceBetweenPoints to account for the distance between 2 points
+        std::stringstream gridValStream;
+        // when display value is above 1000.0 print it is scientific mode
+        if (gridVal < 1000.0) {
+            gridValStream << std::fixed      << std::setprecision(2) << gridVal;
+        } else {
+            gridValStream << std::scientific << std::setprecision(2) << gridVal;
+        }
         double gridValueTextPositionX = 0;
         double gridValueTextPositionY = 0;
-        std::stringstream gridValStream;
         if (axisName == AxisValues::Axis::XAXIS) {
-            gridValStream << std::fixed << std::setprecision(2) << gridVal;
             gridValueTextPositionX = (double)xAxisStart+ (i * gridWidth) - (double)std::ceil(std::to_string(gridVal).size() / 2) - 5; 
             gridValueTextPositionY = yAxisEnd + gridValuePositionY;
-            //gridValueText.setPosition(gridValueTextPosition_x, yAxisEnd + gridValuePositionY);
-        } else {
+        } else {  //if YAXIS
             if (currentCurveSize == 0 && (i == 0 || i == numOfGrids)) {
-                gridValStream << 0;
-                //gridValueTextPositionX -= 5; //buffer between the line and numbers when there is a single digit 
+                gridValStream << 0; //overwrite the value to 0 if no points in the curve
                 gridValueTextPositionX = xAxisStart - 10;
             } else if (currentCurveSize > 0) {
                 gridValueTextPositionX = xAxisStart - (gridValStream.str().size()) - 40;
-                gridValStream << std::scientific << std::setprecision(2) << gridVal;
             }
             if (!gridValStream.str().empty()) {
                 gridValueTextPositionY = static_cast<double>(yAxisEnd) - (i * gridWidth) - 10; // 10 is buffer between the numbers to display and the axis

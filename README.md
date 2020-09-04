@@ -17,7 +17,7 @@ There are 3 modules:
 * Buffer: Buffer is where the Input module stores the values it gets from the source.
 * RealTimeGraph: RealTimeGraph gets the values from the buffer and plots it on to the graph.
 
-![Screenshot](/Diagrams/Overview.png)
+![Overview](/Diagrams/Overview.png)
 
 The Plotter consists of 2 threads:
 

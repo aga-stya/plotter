@@ -21,7 +21,7 @@ AxisValues::AxisValues(int valueStart, int valueEnd,
 
 sf::Text AxisValues::prepareTextToPrint(std::string_view val, 
                                         const double positionX, 
-                                        const double positionY) const {
+                                        const double positionY) const noexcept{
     sf::Text gridValueText;
     gridValueText.setFont(font);
     gridValueText.setString(std::string(val));
@@ -31,7 +31,7 @@ sf::Text AxisValues::prepareTextToPrint(std::string_view val,
     return gridValueText;
 }
 
-void AxisValues::setup() {
+void AxisValues::setup() noexcept{
     double gridWidth = graphWidth/ numOfGrids; 
     for (auto i = 0; i <= numOfGrids; i++) {
         double actualGridWidth = (endValue - startValue)/ (double)numOfGrids;

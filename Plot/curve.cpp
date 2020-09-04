@@ -11,7 +11,7 @@ Curve::Curve() {
     setup();
 }
 
-void Curve::setup(void) {
+void Curve::setup(void) noexcept{
 }
 
 void Curve::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -34,7 +34,7 @@ void Curve::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(&drawCurve[0], drawCurve.size(), sf::PrimitiveType::LineStrip);
 }
 
-void Curve::addNewPoint (const double y) {
+void Curve::addNewPoint (const double y) noexcept{
     static int  current_x = 100;
     static bool startRemovingOldOnes = false;
     if (startRemovingOldOnes) {
@@ -54,7 +54,7 @@ void Curve::addNewPoint (const double y) {
     }
 }
 
-void Curve::reassignVertices(double &minInCurve, double &maxInCurve) {
+void Curve::reassignVertices(double &minInCurve, double &maxInCurve) noexcept{
     minInCurve = std::numeric_limits<int>::max();
     maxInCurve = std::numeric_limits<int>::min();
     for (auto it = curve.begin(); it != curve.end() - 1; it++) {

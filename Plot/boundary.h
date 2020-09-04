@@ -20,19 +20,19 @@ public:
     /**
      * setup
      */
-    void setup();
+    void setup(void) noexcept;
 
     /**
      * set Color
      */
-    void setColor(const sf::Color &color) {
+    void setColor(const sf::Color &color) noexcept{
         boundaryColor = color;
     }
 
     /**
      * get Color
      */
-    sf::Color getColor() const {
+    sf::Color getColor() const noexcept{
         return boundaryColor;
     }
 private:

@@ -23,35 +23,35 @@ public:
     /**
      * set the color of the axis
      */
-    void setColor (const sf::Color &color) {
+    void setColor (const sf::Color &color) noexcept{
         nameColor = color;
     }
 
     /**
      * set the name of the X Axis
      */
-    void setXAxisName(std::string_view name) {
+    void setXAxisName(std::string_view name) noexcept{
         xAxisName = std::string(name);
     }
 
     /**
      * set the name of the Y Axis
      */
-    void setYAxisName(std::string_view name) {
+    void setYAxisName(std::string_view name) noexcept{
         yAxisName = std::string(name);
     }
 
     /**
      * set the name of the X Axis
      */
-    void setCharacterSize(unsigned int characterSize) {
+    void setCharacterSize(unsigned int characterSize) noexcept{
         this->characterSize = characterSize;
     }
 
     /**
      * set the name of the Y Axis
      */
-    unsigned int getCharacterSize(void) {
+    unsigned int getCharacterSize(void) noexcept{
         return characterSize;
     }
 
@@ -69,7 +69,7 @@ private:
     /**
      * setup the Axis
      */
-    void setup();
+    void setup() noexcept;
 
     /**
      * sfml method for drawing

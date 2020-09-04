@@ -19,14 +19,14 @@ realTimeGraph::realTimeGraph(std::shared_ptr<Buffer> ptr, std::string windowName
 realTimeGraph::~realTimeGraph() {
 }
 
-void realTimeGraph::initializeWindow(void) {
+void realTimeGraph::initializeWindow(void) noexcept{
     prepareBoundary();
     for (auto &boundary:ptrBoundaries)
         boundary->setup();
     window.reset(new sf::RenderWindow (sf::VideoMode(plotAreaWidth, plotAreaHeight), windowName));
 }
 
-void realTimeGraph::prepareBoundary(void) {
+void realTimeGraph::prepareBoundary(void) noexcept{
     std::unique_ptr<plot::Boundary> plotBoundary  = std::make_unique<plot::Boundary>(sf::Vector2f(plotAreaPositionX, plotAreaPositionY), 
                                                                                      sf::Vector2f(plotAreaWidth, plotAreaHeight));
     ptrBoundaries.push_back(std::move(plotBoundary));
@@ -35,15 +35,15 @@ void realTimeGraph::prepareBoundary(void) {
     ptrBoundaries.push_back(std::move(graphBoundary));
 }
 
-void realTimeGraph::changeWindowName(std::string_view newName) {
+void realTimeGraph::changeWindowName(std::string_view newName) noexcept{
     window->setTitle(std::string(newName));
 }
 
-void realTimeGraph::clearWindow (sf::Color color) {
+void realTimeGraph::clearWindow (sf::Color color) noexcept{
     window->clear(color);
 }
 
-void realTimeGraph::drawGraph() const {
+void realTimeGraph::drawGraph() const noexcept{
     for (auto &boundary:ptrBoundaries) {
         window->draw(*boundary);
     }
@@ -54,11 +54,11 @@ void realTimeGraph::drawGraph() const {
     window->draw(*ptrYAxisValues);
 }
 
-bool realTimeGraph::isWindowOpen() const {
+bool realTimeGraph::isWindowOpen() const noexcept{
     return window->isOpen();
 }
 
-void realTimeGraph::checkCloseWindow() const {
+void realTimeGraph::checkCloseWindow() const noexcept{
     // check all the window's events that were triggered since the last iteration of the loop
     while (window->pollEvent(*event)) {
         // "close requested" event: we close the window
@@ -69,7 +69,7 @@ void realTimeGraph::checkCloseWindow() const {
     }
 }
 
-void realTimeGraph::displayWindow() const {
+void realTimeGraph::displayWindow() const noexcept{
     // end the current frame
     window->display();
 }

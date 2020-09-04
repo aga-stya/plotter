@@ -20,7 +20,7 @@ public:
     /**
      * setColor
      */
-    void setColor(const sf::Color &color) {
+    void setColor(const sf::Color &color) noexcept{
         gridColor = color;
     }
 private:
@@ -28,7 +28,7 @@ private:
     /**
      * setup
      */
-    void setup(void);
+    void setup(void) noexcept;
 
     /**
      * sfml method for drawing

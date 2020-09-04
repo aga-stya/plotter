@@ -13,7 +13,7 @@ Axis::Axis(std::string_view xAxisName, std::string_view yAxisName)
     setup();
 }
 
-void Axis::setup() {
+void Axis::setup() noexcept{
     xAxis.setFont(font);
     xAxis.setString(xAxisName);
     xAxis.setCharacterSize(characterSize);

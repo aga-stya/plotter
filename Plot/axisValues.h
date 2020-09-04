@@ -27,14 +27,14 @@ public:
     /**
      * set the color for axisValue
      */
-    void setColor(const sf::Color &color) {
+    void setColor(const sf::Color &color) noexcept{
         axisNameColor = color;
     }
 
     /**
      * get the color of axisValue
      */
-    sf::Color getColor(void) const{
+    sf::Color getColor(void) const noexcept{
         return axisNameColor;
     }
 
@@ -51,14 +51,14 @@ public:
     /**
      * set the character size of the value displayed 
      */
-    void setCharacterSize(unsigned int characterSize) {
+    void setCharacterSize(unsigned int characterSize) noexcept{
         this->characterSize = characterSize;
     }
 
     /**
      * get the character size of axisValue
      */
-    unsigned int getCharacterSize(void) const{
+    unsigned int getCharacterSize(void) const noexcept{
         return characterSize;
     }
 
@@ -71,13 +71,13 @@ private:
     /**
      * setup the values 
      */
-    void setup();
+    void setup() noexcept;
 
     /**
      * helper function to prepare the sf::Text object based on the character size, 
      * font etc.
      */
-    sf::Text prepareTextToPrint(std::string_view, const double, const double) const;
+    sf::Text prepareTextToPrint(std::string_view, const double, const double) const noexcept;
 
     // array of values that will be displayed for the axis
     std::vector<sf::Text> axisValues;

@@ -11,7 +11,7 @@ Boundary::Boundary(sf::Vector2f boundaryPosition, sf::Vector2f boundarySize):
 
 }
 
-void Boundary::setup(void) {
+void Boundary::setup(void) noexcept{
     border.setSize(sf::Vector2f(size.x - kBorderSize*2, size.y - kBorderSize*2));
     border.setFillColor(sf::Color(220, 220, 200));
     border.setOutlineColor(sf::Color(200, 0, 0));

@@ -42,27 +42,27 @@ private:
 
 private:
     // prepare the window for the plot
-    void initializeWindow(void);
-    // prepare boundary
-    void prepareBoundary(void);
+    void initializeWindow(void) noexcept;
 
 public:
     //Initialize the window within which the graph is to be created
     realTimeGraph(std::shared_ptr<Buffer>, std::string, std::string, std::string);
     // Destructor
     ~realTimeGraph();
+    // prepare boundary
+    void prepareBoundary(void) noexcept;
     // rename the window
-    void changeWindowName(std::string_view newName); 
+    void changeWindowName(std::string_view newName) noexcept; 
     //Clear the window with a particular color
-    void clearWindow(sf::Color color);
+    void clearWindow(sf::Color color) noexcept;
     // check if window is open
-    bool isWindowOpen() const;
+    bool isWindowOpen() const noexcept;
     // check if somebody wants to close a window
-    void checkCloseWindow() const;
+    void checkCloseWindow() const noexcept;
     // draw graph 
-    void drawGraph() const;
+    void drawGraph() const noexcept;
     // display window
-    void displayWindow() const;
+    void displayWindow() const noexcept;
     // start the loop for the graph
     void startRealTimeGraph();
 };

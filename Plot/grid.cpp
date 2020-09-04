@@ -9,7 +9,7 @@ Grid::Grid() {
     setColor(color);
 }
 
-void Grid::setup(void)
+void Grid::setup(void) noexcept
 {
     vertices.clear();
     vertices.setPrimitiveType(sf::Lines);

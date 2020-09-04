@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-09-04T18:41:32.122Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="YykMUAggNCIypCLqthXT" version="13.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2020-09-04T18:49:01.176Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="4sGhm3jaWfgfpSmFpwAw" version="13.4.6" type="github">
   <diagram id="VMCd4ftwDvAFz8sQamaj" name="Page-1">
     <mxGraphModel dx="1422" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -16,14 +16,8 @@
         <mxCell id="zVElg86mvDzP3ZLKK4sJ-2" value="Buffer" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="280" y="260" width="80" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zVElg86mvDzP3ZLKK4sJ-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="zVElg86mvDzP3ZLKK4sJ-3" target="zVElg86mvDzP3ZLKK4sJ-4" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="zVElg86mvDzP3ZLKK4sJ-3" value="RealTimeGraph" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="440" y="260" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="zVElg86mvDzP3ZLKK4sJ-4" value="Plot" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="640" y="260" width="80" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

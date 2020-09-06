@@ -1,1 +1,25 @@
-<mxfile host="app.diagrams.net" modified="2020-07-22T11:24:23.047Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36" etag="l5f7Fp-x7l6pLDDdmSDA" version="13.5.0" type="device"><diagram id="VMCd4ftwDvAFz8sQamaj" name="Page-1">3ZZda4MwFIZ/jZcDmzjX63Xd99igsMHuQnOqjuiR9Fjb/vrFeawV19LBWMugF+bJCSd58lr05Chd3liVx0+owXjC10tPXnlCDAIhvOrn61VNLsLzGkQ20VzUgkmyBoY+0yLRMO8UEqKhJO/CKWYZTKnDlLVYdstmaLpdcxVBD0ymyvTpW6Iprunw3G/5LSRR3HQe+DyTqqaYwTxWGsstJMeeHFlEqp/S5QhMJa/xUq+73jG72ZiFjA5ZsH4dm2gYpour9Yt8f3x4COb3Z3wZC2UKPjBvllaNAdBOCA/RUowRZsqMW3ppscg0VG18N2prHhFzBwcOfgDRim9XFYQOxZQanq17Vo12no3RHAs7hT0HajKibAS0p05sbsBFFzAFsiu3zoJRlCy6+1CcoWhT12p2D2z6B9YHPet3WV5QT30rtrJUxgnBJFdf5y/d6/adxAVYguV+jf1jNwtCziq/rKIJc7kVfUbxVuqbZb8uKvxv8RQHxlMeM56iZ/2ymM3AHj2fUpxYPi/+Wz7lgfkMjplP2bP+XNAp/H8GwxPLZ9Az9WLw+J7C4M88uWH7ifU1t/WhKsef</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-09-04T18:49:18.643Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="sMQVyIfaMhDlJmYywerB" version="13.4.6" type="github">
+  <diagram id="VMCd4ftwDvAFz8sQamaj" name="Page-1">
+    <mxGraphModel dx="1422" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zVElg86mvDzP3ZLKK4sJ-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="zVElg86mvDzP3ZLKK4sJ-1" target="zVElg86mvDzP3ZLKK4sJ-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zVElg86mvDzP3ZLKK4sJ-1" value="Input" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="260" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zVElg86mvDzP3ZLKK4sJ-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="zVElg86mvDzP3ZLKK4sJ-2" target="zVElg86mvDzP3ZLKK4sJ-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zVElg86mvDzP3ZLKK4sJ-2" value="Buffer" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="260" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zVElg86mvDzP3ZLKK4sJ-3" value="RealTimeGraph" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="560" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

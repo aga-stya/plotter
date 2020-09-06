@@ -45,25 +45,74 @@ private:
     void initializeWindow(void) noexcept;
 
 public:
-    //Initialize the window within which the graph is to be created
+    /**
+     *Initialize the window within which the graph is to be created
+     */
     realTimeGraph(std::shared_ptr<Buffer>, std::string, std::string, std::string);
-    // Destructor
-    ~realTimeGraph();
-    // prepare boundary
+
+    /**
+     * Copy constructor not required
+     */
+    realTimeGraph(const realTimeGraph&) = delete;
+
+    /**
+     * Assignment operator not required
+     */
+    realTimeGraph& operator=(const realTimeGraph&) = delete;
+
+    /**
+     * move constructor not required
+     */
+    realTimeGraph(realTimeGraph&&) = delete;
+
+    /**
+     * move assignment operator not required
+     */
+    realTimeGraph& operator=(realTimeGraph&&) = delete;
+
+    /**
+     * Destructor
+     */
+    ~realTimeGraph() = default;
+
+    /**
+     * prepare boundary
+     */
     void prepareBoundary(void) noexcept;
-    // rename the window
+
+    /**
+     * rename the window
+     */
     void changeWindowName(std::string_view newName) noexcept; 
-    //Clear the window with a particular color
+
+    /**
+     * Clear the window with a particular color
+     */
     void clearWindow(sf::Color color) noexcept;
-    // check if window is open
+
+    /**
+     * check if window is open
+     */
     bool isWindowOpen() const noexcept;
-    // check if somebody wants to close a window
+
+    /**
+     * check if somebody wants to close a window
+     */
     void checkCloseWindow() const noexcept;
-    // draw graph 
+
+    /**
+     * draw graph 
+     */
     void drawGraph() const noexcept;
-    // display window
+
+    /**
+     * display window
+     */
     void displayWindow() const noexcept;
-    // start the loop for the graph
+
+    /**
+     * start the loop for the graph
+     */
     void startRealTimeGraph();
 };
 

@@ -9,16 +9,39 @@
 
 namespace plot {
 
-class Axis
-        : public sf::Drawable
-        , public sf::Transformable {
-private:
+class Axis : public sf::Drawable
+           , public sf::Transformable {
 
 public:
     /**
      * constructor
      */
     Axis(std::string_view, std::string_view);
+
+    /**
+     * Copy constructor not required
+     */
+    Axis(const Axis&) = delete;
+
+    /**
+     * Copy assignment not required
+     */
+    Axis& operator=(const Axis&) = delete;
+
+    /**
+     * Move constructor not required
+     */
+    Axis(Axis&&) = delete;
+
+    /**
+     * Move assignment operator not required
+     */
+    Axis& operator=(Axis&&) = delete;
+
+    /**
+     * Default Destructor 
+     */
+    ~Axis() = default;
 
     /**
      * set the color of the axis

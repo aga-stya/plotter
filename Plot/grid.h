@@ -8,14 +8,38 @@
 
 namespace plot {
 
-class Grid
-        : public sf::Drawable
-        , public sf::Transformable {
+class Grid : public sf::Drawable
+           , public sf::Transformable {
 public:
     /**
      * constructor
      */
     Grid();
+
+    /**
+     * Copy constructor not required
+     */
+    Grid(const Grid&) = delete;
+
+    /**
+     * Copy assignment not required
+     */
+    Grid& operator=(const Grid&) = delete;
+
+    /**
+     * Move constructor not required
+     */
+    Grid(Grid&&) = delete;
+
+    /**
+     * Move assignment operator not required
+     */
+    Grid& operator=(Grid&&) = delete;
+
+    /**
+     * Default Destructor 
+     */
+    ~Grid() = default;
 
     /**
      * setColor

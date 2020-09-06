@@ -9,10 +9,8 @@
 
 namespace plot {
 
-class AxisValues 
-        : public sf::Drawable
-        , public sf::Transformable {
-private:
+class AxisValues : public sf::Drawable
+                 , public sf::Transformable {
 
 public:
     enum class Axis {
@@ -23,6 +21,31 @@ public:
      * constructor
      */
     AxisValues(int, int, int, Axis, std::size_t);
+
+    /**
+     * Copy constructor not required
+     */
+    AxisValues(const AxisValues&) = delete;
+
+    /**
+     * Copy assignment not required
+     */
+    AxisValues& operator=(const AxisValues&) = delete;
+
+    /**
+     * Move constructor not required
+     */
+    AxisValues(AxisValues&&) = delete;
+
+    /**
+     * Move assignment operator not required
+     */
+    AxisValues& operator=(AxisValues&&) = delete;
+
+    /**
+     * Default Destructor 
+     */
+    ~AxisValues() = default;
 
     /**
      * set the color for axisValue

@@ -16,9 +16,6 @@ realTimeGraph::realTimeGraph(std::shared_ptr<Buffer> ptr, std::string windowName
     event.reset(new sf::Event);
 }
 
-realTimeGraph::~realTimeGraph() {
-}
-
 void realTimeGraph::initializeWindow(void) noexcept{
     prepareBoundary();
     for (auto &boundary:ptrBoundaries)

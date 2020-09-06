@@ -9,18 +9,57 @@
 
 namespace plot {
 
-class Curve 
-        : public sf::Drawable
-        , public sf::Transformable {
+class Curve : public sf::Drawable
+            , public sf::Transformable {
+
 public:
+    /**
+     * Default constructor
+     */
     Curve();
 
+    /**
+     * Copy constructor not required
+     */
+    Curve(const Curve&) = delete;
+
+    /**
+     * Copy assignment not required
+     */
+    Curve& operator=(const Curve&) = delete;
+
+    /**
+     * Move constructor not required
+     */
+    Curve(Curve&&) = delete;
+
+    /**
+     * Move assignment operator not required
+     */
+    Curve& operator=(Curve&&) = delete;
+
+    /**
+     * Default Destructor 
+     */
+    ~Curve() = default;
+
+    /**
+     * getter for minimum most value in curve 
+     */
     double getMinInCurve() const noexcept{
         return minInCurve;
     }
+
+    /**
+     * getter for maximum most value in curve 
+     */
     double getMaxInCurve() const noexcept{
         return maxInCurve;
     }
+
+    /**
+     * get the number of values in the curve
+     */
     std::size_t getCurveSize() const noexcept{
         return curve.size();
     }

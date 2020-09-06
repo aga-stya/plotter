@@ -6,16 +6,39 @@
 
 namespace plot {
 
-class Boundary 
-        : public sf::Drawable
-        , public sf::Transformable {
-private:
+class Boundary : public sf::Drawable
+               , public sf::Transformable {
 
 public:
     /**
      * constructor
      */
     Boundary(sf::Vector2f boundaryPosition, sf::Vector2f boundarySize);
+
+    /**
+     * Copy constructor not required
+     */
+    Boundary(const Boundary&) = delete;
+
+    /**
+     * Copy assignment not required
+     */
+    Boundary& operator=(const Boundary&) = delete;
+
+    /**
+     * Move constructor not required
+     */
+    Boundary(Boundary&&) = delete;
+
+    /**
+     * Move assignment operator not required
+     */
+    Boundary& operator=(Boundary&&) = delete;
+
+    /**
+     * Default Destructor 
+     */
+    ~Boundary() = default;
 
     /**
      * setup

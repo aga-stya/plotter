@@ -24,7 +24,7 @@ void plotting(std::shared_ptr<Buffer> ptr) {
 }
 
 int main() {
-  std::shared_ptr<Buffer> ptr(new Buffer());
+  std::shared_ptr<Buffer> ptr = std::make_shared<Buffer>();
   std::thread readInputThread(readInput, ptr);
   std::thread plotThread(plotting, ptr);
   plotThread.join();

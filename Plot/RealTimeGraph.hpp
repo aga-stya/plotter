@@ -16,10 +16,10 @@
 
 class realTimeGraph {
 private:
-    std::shared_ptr<sf::RenderWindow> window;
+    std::unique_ptr<sf::RenderWindow> window;
     // window's events 
-    std::shared_ptr<sf::Event> event;
-    // pointer to Buffer containing input values
+    std::unique_ptr<sf::Event> event;
+    // pointer to Buffer containing input values, it will be a shared resource
     std::shared_ptr<Buffer> ptrBuffer;
     // pointer to Axis object
     std::unique_ptr<plot::Axis> ptrAxis;
